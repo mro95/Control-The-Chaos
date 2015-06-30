@@ -26,6 +26,7 @@ class Main {
         void update( double dt );
 };
 
+bool debugMode = false;
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void DrawCircle(float cx, float cy, float r);
 
