@@ -3,15 +3,14 @@
 
 #include <math.h>
 #include <GLFW/glfw3.h>
+#include "stage.hpp"
+#include "settings.hpp"
 
 # define PI           3.14159265358979323846  /* pi */
 # define TAU          6.28318530717958647692  /* tau */
 
 class Main {
     public:
-
-        static const int windowWidth = 1280;
-        static const int windowHeight = 720;
 
         Main( );
         int execute();
@@ -24,6 +23,8 @@ class Main {
         bool initialize( );
         void render();
         void update( double dt );
+
+        Stage stage;
 };
 
 bool debugMode = false;

@@ -2,6 +2,9 @@
     #define _circle_H_
 
 #include <cmath>
+#include <cstdio>
+#include <iostream>
+#include <unistd.h>
 #include <GLFW/glfw3.h>
 
 # define PI           3.14159265358979323846  /* pi */
