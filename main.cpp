@@ -75,10 +75,12 @@ void Main::render( )
     int width, height;
     glfwGetFramebufferSize(window, &width, &height);
 
-    double top = -(height/2);
-    double bottom = height/2;
-    double left = -(width/2);
-    double right = width/2;
+    int height2 = Main::windowHeight;
+    int width2 = Main::windowWidth;
+    double top = -(height2/2);
+    double bottom = height2/2;
+    double left = -(width2/2);
+    double right = width2/2;
 
     glViewport(0, 0, width, height);
 
