@@ -19,6 +19,8 @@ class Circle {
         void setLineWidth( float w );
         void drawLineCircle();
         void drawFilledCircle();
+        void setCx( int cx );
+        void setCy( int cy );
 
     private:
 

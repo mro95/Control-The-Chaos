@@ -1,5 +1,5 @@
-#include "circle.hpp"
 #include <iostream>
+#include "circle.hpp"
 
 Circle::Circle(int cx, int cy, int r)
 {
@@ -7,6 +7,16 @@ Circle::Circle(int cx, int cy, int r)
     this->cy = cy;
     this->r = r;
     this->lineWidth = 1;
+}
+
+void Circle::setCx( int cx )
+{
+    this->cx = cx;
+}
+
+void Circle::setCy( int cy )
+{
+    this->cy = cy;
 }
 
 void Circle::setLineWidth( float w )
