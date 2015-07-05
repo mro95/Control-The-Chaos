@@ -2,6 +2,7 @@
     #define _stage_H_
 
 #include "shapes/circle.hpp"
+#include "stage/stagecircle.hpp"
 #include <math.h>
 #include <cmath>
 #include <GLFW/glfw3.h>
@@ -18,7 +19,8 @@ class Stage {
 
     private:
 
-        Circle* ball1;
+        StageCircle* stageCircle;
+        Ball* ball1;
 };
 
 #endif

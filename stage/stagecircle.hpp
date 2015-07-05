@@ -2,6 +2,7 @@
     #define _stagecircle_H_
 
 #include <GLFW/glfw3.h>
+#include "ball.hpp"
 
 class StageCircle 
 {

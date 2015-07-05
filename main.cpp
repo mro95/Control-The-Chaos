@@ -3,8 +3,10 @@
 #include <cmath>
 
 #include "main.hpp"
+#include "vec2d.hpp"
 #include "stage.hpp"
 
+#define MAX_DT 0.025
 
 Main::Main( )
 {
@@ -27,16 +29,39 @@ int Main::execute( )
     double lastFrame = glfwGetTime();
     double now;
     double dt;
+    double game_now = lastFrame;
+
+    int fps = 0;
+    int fps_count = 0;
+
 
     while (!glfwWindowShouldClose(window))
     {
-        // GAME LOOP!!!
         now = glfwGetTime();
         dt = now - lastFrame;
+        double game_dt = fmin(dt, MAX_DT);
+        int reps = 0;
+        while(game_now < now) {
+            update( game_dt );
+            game_now += game_dt;
+            reps++;
+        }
+
+        fps += (int) 1/dt;
+        fps_count++;
+        if(fps_count >= 60) {
+            printf("now=%8.4f  game_now=%8.4f  dt=%6.4f  game_dt=%6.4f  reps=%d fps=%6i \n", now, game_now, dt, game_dt, reps, fps/fps_count);
+            fps_count = 0;
+            fps=0;
+        }
+        render( );
         lastFrame = now;
 
-        update( dt );
-        render();
+        if(fps > 65) {
+            usleep(5000);
+        }
+        //if(glfwGetTime() > 10 && glfwGetTime() < 20)
+        //    usleep(1000000);
     }
     glfwDestroyWindow(window);
     glfwTerminate();
