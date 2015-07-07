@@ -3,8 +3,9 @@
 #include <cmath>
 
 #include "main.hpp"
-#include "vec2d.hpp"
+#include "vec2.hpp"
 #include "stage.hpp"
+
 
 #define MAX_DT 0.025
 

@@ -5,19 +5,27 @@ Ball::Ball()
 {
     x = 0;
     y = 0;
-    r = 0;
-    dx = 0;
-    dy = -300;
+    r = 30;
+    dx = -500;
+    dy = 300;
+    circle = new Circle(x,y,r);
 }
 
 void Ball::draw()
 {
-    Circle* circle = new Circle(x,y,r);
     circle->drawFilledCircle();
 }
 
 void Ball::update( double dt )
 {
-    x += dx * dt;
-    y += dy * dt;
+    x = x + dx * dt;
+    y = y + dy * dt;
+    circle->setX(x);
+    circle->setY(y);
+}
+
+void Ball::flipY()
+{
+    dy = -(dy);
+    dx = -(dx);
 }

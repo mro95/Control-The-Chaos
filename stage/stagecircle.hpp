@@ -7,9 +7,11 @@
 class StageCircle 
 {
     public:
+        int r;
+        Circle* circle;
 
         StageCircle();
         void draw();
-        void ballCollision( Ball* ball );
+        bool ballCollision( Ball* ball );
 };
 #endif

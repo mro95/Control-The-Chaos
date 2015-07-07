@@ -21,6 +21,7 @@ class Stage {
 
         StageCircle* stageCircle;
         Ball* ball1;
+        int[] balls;
 };
 
 #endif

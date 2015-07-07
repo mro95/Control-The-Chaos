@@ -18,11 +18,11 @@ void Stage::render()
     double windowWidth = Settings::windowWidth;
     double windowHeight = Settings::windowHeight;
 
+    glColor3d(0, 0, 0);
     stageCircle->draw();
 
-    glColor3d(0, 0, 0);
-    Circle* circle2 = new Circle(0,0,50);
-    circle2->drawFilledCircle();
+    //Circle* circle2 = new Circle(0,0,50);
+    //circle2->drawFilledCircle();
 
     glColor3d(0, 0, 1);
     ball1->draw();
@@ -34,7 +34,12 @@ void Stage::render()
 
 void Stage::update( double dt )
 {
-    ball1->update( dt ) ;
+    ball1->update( dt );
 
-
+    if( stageCircle->ballCollision(ball1) ) {
+        //std::cout << "true" << "\n";
+        ball1->flipY();
+    } else {
+        //std::cout << ball1->y << "\n";
+    }
 }

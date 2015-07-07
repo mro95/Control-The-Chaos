@@ -1,18 +1,18 @@
-#ifndef Vec2D_H
-#define Vec2D_H
+#ifndef vec2_H
+#define vec2_H
 
 #include <cmath>
 
 # define PI           3.14159265358979323846  /* pi */
 # define TAU          6.28318530717958647692  /* tau */
 
-class Vec2D {
+class vec2 {
 
     public:
         double x;
         double y;
 
-        Vec2D( double x, double y )
+        vec2( double x, double y )
         {
             this->x = x;
             this->y = y;
@@ -29,42 +29,42 @@ class Vec2D {
         }
 
         // Addittion
-        Vec2D operator+(const Vec2D& other)
+        vec2 operator+(const vec2& other)
         {
-            return Vec2D(this->x + other.x,this->y + other.y);
+            return vec2(this->x + other.x,this->y + other.y);
         }
 
-        Vec2D operator+(const float other)
+        vec2 operator+(const float other)
         {
-            return Vec2D(this->x + other,this->y + other);
+            return vec2(this->x + other,this->y + other);
         }
 
 
         // Subtraction
-        Vec2D operator-(const Vec2D& other)
+        vec2 operator-(const vec2& other)
         {
-            return Vec2D(this->x - other.x,this->y - other.y);
+            return vec2(this->x - other.x,this->y - other.y);
         }
 
-        Vec2D operator-(const float other)
+        vec2 operator-(const float other)
         {
-            return Vec2D(this->x - other,this->y - other);
+            return vec2(this->x - other,this->y - other);
         }
 
         // Multiplication
-        Vec2D operator*(const Vec2D& other)
+        vec2 operator*(const vec2& other)
         {
-            return Vec2D(this->x * other.x ,this->y * other.y);
+            return vec2(this->x * other.x ,this->y * other.y);
         }
 
-        Vec2D operator*(const float other)
+        vec2 operator*(const float other)
         {
-            return Vec2D(this->x * other,this->y * other);
+            return vec2(this->x * other,this->y * other);
         }
 
 
         // Dot product
-        double dot(Vec2D other)
+        double dot(vec2 other)
         {
             return this->x * other.x + this->y * other.y;
         }
