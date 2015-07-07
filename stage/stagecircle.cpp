@@ -8,12 +8,12 @@ StageCircle::StageCircle()
 {
     this->r = Settings::windowHeight/2-10;
     circle = new Circle(0,0,r);
+    circle->setRGB(0,0,0);
     circle->setLineWidth(5.0);
 }
 
 void StageCircle::draw()
 {
-    glColor3d(0, 0, 0);
     circle->drawLineCircle();
 }
 

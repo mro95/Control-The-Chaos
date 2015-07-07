@@ -6,14 +6,19 @@ Ball::Ball()
     x = 0;
     y = 0;
     r = 30;
-    dx = -500;
-    dy = 300;
+    dx = 0;
+    dy = 0;
     circle = new Circle(x,y,r);
 }
 
 void Ball::draw()
 {
     circle->drawFilledCircle();
+}
+
+void Ball::setRGB(int r, int g, int b)
+{
+    circle->setRGB(r,g,b);
 }
 
 void Ball::update( double dt )

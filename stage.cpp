@@ -11,35 +11,51 @@ Stage::Stage()
     ball1->y = 0;
     ball1->r = 15;
     stageCircle = new StageCircle();
+
+    Ball* b1 = new Ball();
+    b1->r = 15;
+    b1->dx = 300;
+    b1->dy = -100;
+    b1->setRGB(0,0,255);
+    balls[0].set(b1);
+    
+    Ball* b2 = new Ball();
+    b2->r = 15;
+    b2->dx = -200;
+    b2->dy = 200;
+    b2->setRGB(0,255,0);
+    balls[1].set(b2);
+    
+    Ball* b3 = new Ball();
+    b3->r = 15;
+    b3->dx = 200;
+    b3->dy = 50;
+    b1->setRGB(0,0,255);
+    balls[2].set(b3);
 }
 
 void Stage::render()
 {
-    double windowWidth = Settings::windowWidth;
-    double windowHeight = Settings::windowHeight;
-
     glColor3d(0, 0, 0);
     stageCircle->draw();
 
-    //Circle* circle2 = new Circle(0,0,50);
-    //circle2->drawFilledCircle();
-
-    glColor3d(0, 0, 1);
-    ball1->draw();
-
-    //Circle* circle3 = new Circle(0,200,15);
-    //circle3->drawFilledCircle();
-
+    for(int i=0;i<3;i++) {
+        Ball* b = balls[i].get();
+        b->draw();
+    }
 }
 
 void Stage::update( double dt )
 {
-    ball1->update( dt );
+    for(int i=0;i<3;i++) {
+        Ball* b = balls[i].get();
+        b->update( dt );
 
-    if( stageCircle->ballCollision(ball1) ) {
-        //std::cout << "true" << "\n";
-        ball1->flipY();
-    } else {
-        //std::cout << ball1->y << "\n";
+        if( stageCircle->ballCollision(b) ) {
+            //std::cout << "true" << "\n";
+            b->flipY();
+        } else {
+            //std::cout << ball1->y << "\n";
+        }
     }
 }

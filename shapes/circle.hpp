@@ -15,6 +15,7 @@ class Circle {
     public:
         vec2 v;
         int r;
+        int rgb[3];
         float lineWidth;
 
         Circle(int cx, int cy, int r);
@@ -23,6 +24,7 @@ class Circle {
         void drawFilledCircle();
         void setX( int x );
         void setY( int y );
+        void setRGB( int r, int g, int b );
 
     private:
 

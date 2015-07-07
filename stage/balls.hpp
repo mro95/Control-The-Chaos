@@ -16,6 +16,6 @@ class Balls
         {
             return ball;
         }
-}
+};
 
 #endif

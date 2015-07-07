@@ -3,6 +3,7 @@
 
 #include "shapes/circle.hpp"
 #include "stage/stagecircle.hpp"
+#include "stage/balls.hpp"
 #include <math.h>
 #include <cmath>
 #include <GLFW/glfw3.h>
@@ -21,7 +22,7 @@ class Stage {
 
         StageCircle* stageCircle;
         Ball* ball1;
-        int[] balls;
+        Balls balls[];
 };
 
 #endif

@@ -18,6 +18,7 @@ class Ball
         void draw();
         void update( double dt );
         void flipY();
+        void setRGB(int r, int g, int b);
 
 
 };
