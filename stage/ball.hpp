@@ -17,8 +17,10 @@ class Ball
         Ball();
         void draw();
         void update( double dt );
-        void flipY();
+        void flip();
         void setRGB(int r, int g, int b);
+
+        bool ballCollision( Ball* other );
 
 
 };

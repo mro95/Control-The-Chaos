@@ -29,8 +29,19 @@ void Ball::update( double dt )
     circle->setY(y);
 }
 
-void Ball::flipY()
+void Ball::flip()
 {
     dy = -(dy);
     dx = -(dx);
+}
+
+bool Ball::ballCollision( Ball* other )
+{
+    int dx = other->x - this->x;
+    int dy = other->y - this->y;
+    int dr = other->r*2 + this->r*2;
+    if( dx*dx + dy*dy < dr*dr) {
+        return true;
+    }
+    return false;
 }
