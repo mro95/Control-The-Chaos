@@ -28,7 +28,7 @@ class vec2 {
             this->y = y;
         }
 
-        // Addittion
+        // Addition
         vec2 operator+(const vec2& other)
         {
             return vec2(this->x + other.x,this->y + other.y);
@@ -39,6 +39,19 @@ class vec2 {
             return vec2(this->x + other,this->y + other);
         }
 
+        vec2 operator+=(const vec2& other)
+        {
+            this->x += other.x;
+            this->y += other.y;
+            return *this;
+        }
+
+        vec2 operator+=(const float other)
+        {
+            this->x += other;
+            this->y += other;
+            return *this;
+        }
 
         // Subtraction
         vec2 operator-(const vec2& other)
@@ -49,6 +62,20 @@ class vec2 {
         vec2 operator-(const float other)
         {
             return vec2(this->x - other,this->y - other);
+        }
+        
+        vec2 operator-=(const vec2& other)
+        {
+            this->x -= other.x;
+            this->y -= other.y;
+            return *this;
+        }
+
+        vec2 operator-=(const float other)
+        {
+            this->x -= other;
+            this->y -= other;
+            return *this;
         }
 
         // Multiplication
@@ -62,6 +89,19 @@ class vec2 {
             return vec2(this->x * other,this->y * other);
         }
 
+        vec2 operator*=(const vec2& other)
+        {
+            this->x *= other.x;
+            this->y *= other.y;
+            return *this;
+        }
+
+        vec2 operator*=(const float other)
+        {
+            this->x *= other;
+            this->y *= other;
+            return *this;
+        }
 
         // Dot product
         double dot(vec2 other)
@@ -69,11 +109,9 @@ class vec2 {
             return this->x * other.x + this->y * other.y;
         }
 
-
-        // Length
         double length()
         {
-            return sqrt(x*x + y*y);
+            return sqrt(length2());
         }
 
         double length2()
@@ -81,28 +119,33 @@ class vec2 {
             return x*x + y*y;
         }
 
-
         /** normalize the vector so that is has length unity
-            returns the previous length of the factor */
+            returns the previous length of the vector */
         double normalize()
         {
             double norm = length();
             if(norm > 0.0) {
                 double inv = 1.0/norm;
-                x *= inv;
-                y *= inv;
+                *this *= inv;
             }
             return norm;
         }
 
-
-
-
-        // Phi
+        // Polar coordinates
         double getPhi()
         {
             return atan2(y,x);
         }
+        double getR() {
+            return length();
+        }
+        vec2 setR(double r) {
+            return (*this *= r / length());
+        }
+        vec2 setPhi(double phi) {
+            return getR() * vec2(cos(phi), sin(phi))
+        }
+
 };
 
 #endif

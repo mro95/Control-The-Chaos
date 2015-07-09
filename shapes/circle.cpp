@@ -57,7 +57,7 @@ void Circle::drawFilledCircle( )
     glBegin(GL_TRIANGLE_FAN);
     glColor3d(rgb[0], rgb[1], rgb[2]);
     glVertex2d(v.x, v.y);
-    for(double a = 0; a < 7; a += circle_step) 
+    for(double a = 0; a < TAU; a += circle_step) 
     {
         glVertex2d(v.x + r * cos(a), v.y + r * sin(a));
     }

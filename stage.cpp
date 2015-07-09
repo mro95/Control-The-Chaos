@@ -61,7 +61,7 @@ void Stage::update( double dt )
             if( i == j )
                 continue;
             Ball* other = balls[j].get();
-            if( b->ballCollision(other) ) 
+            if( b->ballCollision(other) )
             {
                 b->flip();
                 other->flip();

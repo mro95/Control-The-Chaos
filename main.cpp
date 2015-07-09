@@ -105,17 +105,17 @@ void Main::update( double dt )
 
 void Main::render( )
 {
-    int width, height;
-    glfwGetFramebufferSize(window, &width, &height);
+    int widtha, heighta;
+    glfwGetFramebufferSize(window, &widtha, &heighta);
 
     int height2 = Settings::windowHeight;
     int width2 = Settings::windowWidth;
-    double top = -(height2/2);
-    double bottom = height2/2;
-    double left = -(width2/2);
-    double right = width2/2;
+    double top = -(height2/2.0);
+    double bottom = height2/2.0;
+    double left = -(width2/2.0);
+    double right = width2/2.0;
 
-    glViewport(0, 0, width, height);
+    glViewport(0, 0, widtha, heighta);
 
     glClearColor(1, 1, 1, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
