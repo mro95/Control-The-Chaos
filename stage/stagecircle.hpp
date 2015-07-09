@@ -7,6 +7,7 @@
 class StageCircle 
 {
     public:
+        vec2 p = vec2(0,0);
         int r;
         Circle* circle;
 

@@ -1,14 +1,11 @@
 #include "ball.hpp"
 #include "../shapes/circle.hpp"
 
-Ball::Ball()
+Ball::Ball(vec2 p)
 {
-    x = 0;
-    y = 0;
     r = 30;
-    dx = 0;
-    dy = 0;
-    circle = new Circle(x,y,r);
+    this->p = p;
+    circle = new Circle(p,r);
 }
 
 void Ball::draw()
@@ -23,22 +20,20 @@ void Ball::setRGB(int r, int g, int b)
 
 void Ball::update( double dt )
 {
-    x = x + dx * dt;
-    y = y + dy * dt;
-    circle->setX(x);
-    circle->setY(y);
+    p = p + v * dt;
+    circle->p = p;
 }
 
 void Ball::flip()
 {
-    dy = -(dy);
-    dx = -(dx);
+    v.y = -(v.y);
+    v.x = -(v.x);
 }
 
 bool Ball::ballCollision( Ball* other )
 {
-    int dx = other->x - this->x;
-    int dy = other->y - this->y;
+    int dx = other->p.x - this->p.x;
+    int dy = other->p.y - this->p.y;
     int dr = other->r*2 + this->r*2;
     if( dx*dx + dy*dy < dr*dr) {
         return true;

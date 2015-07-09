@@ -18,16 +18,6 @@ class vec2 {
             this->y = y;
         }
 
-        void setX( double x )
-        {
-            this->x = x;
-        }
-
-        void setY( double y )
-        {
-            this->y = y;
-        }
-
         // Addition
         vec2 operator+(const vec2& other)
         {
@@ -132,18 +122,18 @@ class vec2 {
         }
 
         // Polar coordinates
-        double getPhi()
-        {
+        double getPhi() {
             return atan2(y,x);
         }
         double getR() {
             return length();
         }
-        vec2 setR(double r) {
-            return (*this *= r / length());
+
+        vec2 setPhi( double phi ) {
+            return vec2(cos(phi), sin(phi)) * getR();
         }
-        vec2 setPhi(double phi) {
-            return getR() * vec2(cos(phi), sin(phi))
+        vec2 setR( double r ) {
+            return (*this *= r / length());
         }
 
 };

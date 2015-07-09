@@ -2,9 +2,9 @@
 #include "circle.hpp"
 #include "../vec2.hpp"
 
-Circle::Circle(int cx, int cy, int r): v(0,0)
+Circle::Circle(vec2 p, int r)
 {
-    this->v = vec2(cx, cy);
+    this->p = p;
     this->r = r;
     this->lineWidth = 1;
     rgb[0] = 0;
@@ -17,16 +17,6 @@ void Circle::setRGB( int r, int g, int b )
     rgb[0] = r/255;
     rgb[1] = g/255;
     rgb[2] = b/255;
-}
-
-void Circle::setX( int x )
-{
-    this->v.x = x;
-}
-
-void Circle::setY( int y )
-{
-    this->v.y = y;
 }
 
 void Circle::setLineWidth( float w )
@@ -44,7 +34,7 @@ void Circle::drawLineCircle( )
     glColor3d(rgb[0], rgb[1], rgb[2]);
     for(double a = 0; a < TAU; a += circle_step) 
     {
-        glVertex2d(v.x + r * cos(a), v.y + r * sin(a));
+        glVertex2d(p.x + r * cos(a), p.y + r * sin(a));
     }
     glEnd();
 }
@@ -56,10 +46,10 @@ void Circle::drawFilledCircle( )
     glLineWidth((GLfloat) this->lineWidth);
     glBegin(GL_TRIANGLE_FAN);
     glColor3d(rgb[0], rgb[1], rgb[2]);
-    glVertex2d(v.x, v.y);
+    glVertex2d(p.x, p.y);
     for(double a = 0; a < TAU; a += circle_step) 
     {
-        glVertex2d(v.x + r * cos(a), v.y + r * sin(a));
+        glVertex2d(p.x + r * cos(a), p.y + r * sin(a));
     }
     glEnd();
 }

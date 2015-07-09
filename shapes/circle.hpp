@@ -13,17 +13,15 @@
 
 class Circle {
     public:
-        vec2 v;
+        vec2 p = vec2(0,0);
         int r;
         int rgb[3];
         float lineWidth;
 
-        Circle(int cx, int cy, int r);
+        Circle(vec2 p, int r);
         void setLineWidth( float w );
         void drawLineCircle();
         void drawFilledCircle();
-        void setX( int x );
-        void setY( int y );
         void setRGB( int r, int g, int b );
 
     private:
