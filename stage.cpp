@@ -3,6 +3,7 @@
 #include "settings.hpp"
 #include "stage/stagecircle.hpp"
 
+#define max_balls 3
 
 Stage::Stage()
 {
@@ -25,13 +26,23 @@ Stage::Stage()
     b3->r = 15;
     b1->setRGB(0,0,255);
     balls[2].set(b3);
+
+    //for(int i=0;i<5;i++) {
+    //    double x = -250+(rand()%(250-(-250)));
+    //    double y = rand() % 250;
+    //    Ball* b1 = new Ball( vec2(x, y) );
+    //    b1->v = vec2(300, -100);
+    //    b1->setRGB(0,0,255);
+    //    b1->r = 15;
+    //    balls[i].set(b1);
+    //}
 }
 
 void Stage::render()
 {
     stageCircle->draw();
 
-    for(int i=0;i<3;i++) {
+    for(int i=0;i<max_balls;i++) {
         Ball* b = balls[i].get();
         b->draw();
     }
@@ -39,25 +50,23 @@ void Stage::render()
 
 void Stage::update( double dt )
 {
-    for(int i=0;i<3;i++) {
+    for(int i=0;i<max_balls;i++) {
         Ball* b = balls[i].get();
 
         if( stageCircle->ballCollision(b) ) {
-            b->flip();
+            b->bounce( b->p );
+            //b->flip();
         }
 
-        for(int j=0;j<3;j++) {
+        for(int j=0;j<max_balls;j++) {
             if( i == j )
                 continue;
             Ball* other = balls[j].get();
             if( b->ballCollision(other) )
             {
-                b->flip();
-                other->flip();
-                //printf("dx = %i dy = %i \n", b->dx - other->dx, b->dy - other->dy);
+                b->bounce( other->v );
+                //other->bounce( b->p );
             }
-            //else
-                //std::cout << "no:" << j << std::endl;
         }
 
         b->update( dt );

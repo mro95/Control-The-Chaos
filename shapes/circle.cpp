@@ -1,6 +1,6 @@
 #include <iostream>
-#include "circle.hpp"
 #include "../vec2.hpp"
+#include "circle.hpp"
 
 Circle::Circle(vec2 p, int r)
 {
@@ -28,7 +28,6 @@ void Circle::drawLineCircle( )
 {
     int seg = 64;
     double circle_step = TAU / seg;
-
     glLineWidth((GLfloat) this->lineWidth);
     glBegin(GL_LINE_LOOP);
     glColor3d(rgb[0], rgb[1], rgb[2]);

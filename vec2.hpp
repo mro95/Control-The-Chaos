@@ -49,11 +49,11 @@ class vec2 {
             return vec2(this->x - other.x,this->y - other.y);
         }
 
-        vec2 operator-(const float other)
+        vec2 operator-(const double other)
         {
             return vec2(this->x - other,this->y - other);
         }
-        
+
         vec2 operator-=(const vec2& other)
         {
             this->x -= other.x;
@@ -74,7 +74,7 @@ class vec2 {
             return vec2(this->x * other.x ,this->y * other.y);
         }
 
-        vec2 operator*(const float other)
+        vec2 operator*(const double other)
         {
             return vec2(this->x * other,this->y * other);
         }
@@ -99,6 +99,11 @@ class vec2 {
             return this->x * other.x + this->y * other.y;
         }
 
+        double static dot2(vec2 a, vec2 b)
+        {
+            return a.x * b.x + a.y * b.y;
+        }
+
         double length()
         {
             return sqrt(length2());
@@ -121,6 +126,16 @@ class vec2 {
             return norm;
         }
 
+        vec2 normalize2()
+        {
+            double norm = length();
+            if(norm > 0.0) {
+                double inv = 1.0/norm;
+                *this *= inv;
+            }
+            return *this;
+        }
+
         // Polar coordinates
         double getPhi() {
             return atan2(y,x);
@@ -134,6 +149,14 @@ class vec2 {
         }
         vec2 setR( double r ) {
             return (*this *= r / length());
+        }
+
+        vec2 reflect( vec2 other )
+        {
+            vec2 o = vec2(other.x, other.y);
+            o.normalize2();
+            vec2 v = *this;
+            return v - (o * (vec2::dot2(v, o) * 2)) ;
         }
 
 };

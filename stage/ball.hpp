@@ -20,6 +20,7 @@ class Ball
         void setRGB(int r, int g, int b);
 
         bool ballCollision( Ball* other );
+        void bounce( vec2 other );
 
 
 };
