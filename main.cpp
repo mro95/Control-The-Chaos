@@ -1,3 +1,6 @@
+#define MAX_DT 0.025
+#define SPEED 1
+
 #include <iostream>
 #include <unistd.h>
 #include <cmath>
@@ -7,7 +10,6 @@
 #include "stage.hpp"
 
 
-#define MAX_DT 0.025
 
 Main::Main( )
 {
@@ -51,7 +53,9 @@ int Main::execute( )
         fps += (int) 1/dt;
         fps_count++;
         if(fps_count >= 60) {
-            printf("now=%8.4f  game_now=%8.4f  dt=%6.4f  game_dt=%6.4f  reps=%d fps=%6i \n", now, game_now, dt, game_dt, reps, fps/fps_count);
+            printf("now=%8.4f  game_now=%8.4f  dt=%6.4f  game_dt=%6.4f  reps=%d fps=%6i \n",
+                    now, game_now, dt, game_dt, reps, fps/fps_count);
+            
             fps_count = 0;
             fps=0;
         }
@@ -61,8 +65,6 @@ int Main::execute( )
         if(fps > 65) {
             usleep(5000);
         }
-        //if(glfwGetTime() > 10 && glfwGetTime() < 20)
-        //    usleep(1000000);
     }
     glfwDestroyWindow(window);
     glfwTerminate();

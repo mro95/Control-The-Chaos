@@ -50,22 +50,24 @@ void Stage::render()
 
 void Stage::update( double dt )
 {
+    //if(glfwGetTime() > 10 && glfwGetTime() < 20)
+    //    usleep(1000000);
     for(int i=0;i<max_balls;i++) {
         Ball* b = balls[i].get();
 
         if( stageCircle->ballCollision(b) ) {
             b->bounce( b->p );
+            b->p += b->v * dt;
             //b->flip();
         }
 
-        for(int j=0;j<max_balls;j++) {
-            if( i == j )
-                continue;
+        for(int j= i+1;j<max_balls;j++) {
             Ball* other = balls[j].get();
             if( b->ballCollision(other) )
             {
-                b->bounce( other->v );
-                //other->bounce( b->p );
+                b->ballBounce( other );
+                other->ballBounce( b );
+                //b->p += b->v * dt;
             }
         }
 

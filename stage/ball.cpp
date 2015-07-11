@@ -33,9 +33,9 @@ void Ball::flip()
 
 bool Ball::ballCollision( Ball* other )
 {
-    int dx = other->p.x - this->p.x;
-    int dy = other->p.y - this->p.y;
-    int dr = other->r*2 + this->r*2;
+    double dx = other->p.x - this->p.x;
+    double dy = other->p.y - this->p.y;
+    double dr = other->r*2 + this->r*2;
     if( dx*dx + dy*dy < dr*dr) {
         return true;
     }
@@ -46,6 +46,16 @@ void Ball::bounce( vec2 other )
 {
     vec2 norm = vec2(other.x, other.y);
     //vec2 norm = vec2(v.x, v.y);
+    norm.normalize();
+
+    v = v - (norm * (vec2::dot2(v,norm) * 2));
+
+    std::cout << v.x << std::endl;
+}
+
+void Ball::ballBounce( Ball* other )
+{
+    vec2 norm = this->p - other->p;
     norm.normalize();
 
     v = v - (norm * (vec2::dot2(v,norm) * 2));
