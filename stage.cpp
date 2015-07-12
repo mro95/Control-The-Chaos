@@ -52,9 +52,11 @@ void Stage::update( double dt )
 {
     //if(glfwGetTime() > 10 && glfwGetTime() < 20)
     //    usleep(1000000);
+    double somVelocity = 0.00;
     for(int i=0;i<max_balls;i++) {
         Ball* b = balls[i].get();
 
+        int collisions = false;
         if( stageCircle->ballCollision(b) ) {
             b->bounce( b->p );
             b->p += b->v * dt;
@@ -65,12 +67,26 @@ void Stage::update( double dt )
             Ball* other = balls[j].get();
             if( b->ballCollision(other) )
             {
-                b->ballBounce( other );
-                other->ballBounce( b );
-                //b->p += b->v * dt;
+                collisions = false;
+                b->ballBounce( other, dt );
+                other->ballBounce( b, dt );
+                b->update( dt );
+                other->update( dt );
             }
         }
 
-        b->update( dt );
+        if ( !collisions )
+            b->update( dt );
+
+        somVelocity += b->v.x;
+        somVelocity += b->v.y;
     }
+    double  vx = balls[0].get()->v.x;
+    double  vy = balls[0].get()->v.y;
+    double pvx = balls[0].get()->pv.x;
+    double pvy = balls[0].get()->pv.y;
+    double ax = vx-pvx;
+    double ay = (pvy-vy)/dt;
+    double as = (ax-ay)/dt;
+    //printf("ax=%f; ay=%f; as=%f; \n", ax, ay, as );
 }

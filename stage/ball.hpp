@@ -8,9 +8,10 @@ class Ball
 {
     public:
 
-        vec2 p = vec2(0,0);
-        vec2 v = vec2(0,0);
-        double r;
+        vec2 p = vec2(0,0);  // Position
+        vec2 v = vec2(0,0);  // Velocity
+        vec2 pv = vec2(0,0); // Previous Velocity
+        double r; // Radius
         double mass = 5.0;
         Circle* circle;
 
@@ -22,7 +23,7 @@ class Ball
 
         bool ballCollision( Ball* other );
         void bounce( vec2 other );
-        void ballBounce( Ball* other );
+        void ballBounce( Ball* other, double dt );
 
 
 };

@@ -53,8 +53,9 @@ int Main::execute( )
         fps += (int) 1/dt;
         fps_count++;
         if(fps_count >= 60) {
-            printf("now=%8.4f  game_now=%8.4f  dt=%6.4f  game_dt=%6.4f  reps=%d fps=%6i \n",
-                    now, game_now, dt, game_dt, reps, fps/fps_count);
+            if( debugMode )
+                printf("now=%8.4f  game_now=%8.4f  dt=%6.4f  game_dt=%6.4f  reps=%d fps=%6i \n",
+                        now, game_now, dt, game_dt, reps, fps/fps_count);
             
             fps_count = 0;
             fps=0;
