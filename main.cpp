@@ -44,6 +44,7 @@ int Main::execute( )
         dt = now - lastFrame;
         double game_dt = fmin(dt, MAX_DT);
         int reps = 0;
+
         while(game_now < now) {
             update( game_dt );
             game_now += game_dt;

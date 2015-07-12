@@ -8,9 +8,9 @@ class Ball
 {
     public:
 
-        vec2 p = vec2(0,0);  // Position
-        vec2 v = vec2(0,0);  // Velocity
-        vec2 pv = vec2(0,0); // Previous Velocity
+        vec2 p  = vec2(0,0);  // Position
+        vec2 pp = p;          // Previous position
+        vec2 a  = vec2(0,0);  // Acceleration
         double r; // Radius
         double mass = 5.0;
         Circle* circle;

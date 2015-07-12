@@ -21,8 +21,9 @@ void Ball::setRGB(int r, int g, int b)
 
 void Ball::update( double dt )
 {
+    int a = 0;
     pv = v;
-    p += v * dt;
+    p += v * dt + 0.5 * a * dt * dt;
     circle->p = p;
 }
 
@@ -46,13 +47,10 @@ bool Ball::ballCollision( Ball* other )
 void Ball::bounce( vec2 other )
 {
     vec2 norm = vec2(other.x, other.y);
-    //vec2 norm = vec2(v.x, v.y);
     norm.normalize();
 
     pv = v;
     v = v - (norm * (vec2::dot2(v,norm) * 2));
-
-    //std::cout << v.x << std::endl;
 }
 
 void Ball::ballBounce( Ball* other, double dt )
