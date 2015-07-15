@@ -6,6 +6,7 @@
 #include "stage/balls.hpp"
 #include <math.h>
 #include <cmath>
+#include <list>
 #include <GLFW/glfw3.h>
 
 # define PI           3.14159265358979323846  /* pi */
@@ -17,6 +18,7 @@ class Stage {
         Stage();
         void render();
         void update( double dt );
+        std::list<vec2> cols;
 
     private:
 

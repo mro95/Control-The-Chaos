@@ -2,91 +2,124 @@
 #include "stage.hpp"
 #include "settings.hpp"
 #include "stage/stagecircle.hpp"
+#include <GL/glut.h>
+#include <list>
 
-#define max_balls 3
+#define max_balls 2
 
 Stage::Stage()
 {
     stageCircle = new StageCircle();
 
-    Ball* b1 = new Ball( vec2( 200, 100) );
-    b1->v = vec2(300, -100);
+    Ball* b1 = new Ball( vec2( 300, 0) );
+    b1->updateR(30);
+    b1->v = vec2(100, 0);
     b1->setRGB(0,0,255);
-    b1->r = 15;
     balls[0].set(b1);
 
-    Ball* b2 = new Ball( vec2 (0,-250) );
-    b2->v = vec2(50, 100);
-    b2->r = 15;
+    Ball* b2 = new Ball( vec2 (-100, 0) );
+    b2->updateR(30);
+    b2->v = vec2(-20, 0);
     b2->setRGB(0,255,0);
     balls[1].set(b2);
 
-    Ball* b3 = new Ball( vec2(-250, 50) );
-    b3->v = vec2(200, -150);
-    b3->r = 15;
-    b1->setRGB(0,0,255);
-    balls[2].set(b3);
+    //Ball* b3 = new Ball( vec2(-250, 50) );
+    //b3->updateR(30);
+    //b3->v = vec2(200, -150);
+    //b1->setRGB(0,0,255);
+    //balls[2].set(b3);
 
-    //for(int i=0;i<5;i++) {
-    //    double x = -250+(rand()%(250-(-250)));
-    //    double y = rand() % 250;
+    //for(int i=0;i<max_balls+1;i++) {
+    //    double x = rand() % 500 -250;
+    //    double y = rand() % 500 -250;
+    //    double dx = rand() % 500 -250;
+    //    double dy = rand() % 500 -250;
     //    Ball* b1 = new Ball( vec2(x, y) );
-    //    b1->v = vec2(300, -100);
+    //    b1->updateR(40);
+    //    b1->v = vec2(dx, dy);
     //    b1->setRGB(0,0,255);
-    //    b1->r = 15;
     //    balls[i].set(b1);
     //}
+    
+    //cols.push_back( vec2(34,56) );
+    //cols.push_back( vec2(79,0) );
 }
 
 void Stage::render()
 {
+
     stageCircle->draw();
 
     for(int i=0;i<max_balls;i++) {
         Ball* b = balls[i].get();
         b->draw();
     }
+
+    // Draw collisions
+    for (std::list<vec2>::iterator it=cols.begin(); it != cols.end(); ++it) {
+        //std::cout << (*it).x << std::endl;
+        glColor3d(1,0,0);
+        glPointSize(15);
+        glBegin(GL_POINTS);
+        glVertex3d((*it).x, (*it).y, 0);
+        glEnd();
+    }
+    cols.clear();
+
+    //glRasterPos2i(-500, -300);
+
+    //std::string s = "Hallo";
+    //
+    //glColor3f(0.0f, 0.0f, 1.0f);
+    //glTranslatef(0.0f, 0.0f, -5.0f);
+
+    //void * font = GLUT_BITMAP_9_BY_15;
+    //for (std::string::iterator i = s.begin(); i != s.end(); ++i)
+    //{
+    //    char c = *i;
+    //    glutBitmapCharacter(font, c);
+    //}
 }
 
 void Stage::update( double dt )
 {
     //if(glfwGetTime() > 10 && glfwGetTime() < 20)
     //    usleep(1000000);
-    double somVelocity = 0.00;
-    for(int i=0;i<max_balls;i++) {
+    for(int i=0;i<max_balls;i++) 
+    {
         Ball* b = balls[i].get();
 
         int collisions = false;
         if( stageCircle->ballCollision(b) ) {
             b->bounce( b->p );
-            b->p += b->v * dt;
+            b->update( dt );
             //b->flip();
         }
 
-        for(int j= i+1;j<max_balls;j++) {
+        //for(int j=0;j<max_balls;j++)
+        for(int j= i+1;j<max_balls;j++)
+        {
             Ball* other = balls[j].get();
+            vec2 op = other->p;
+            if( other->ballCollision(b) )
+            {
+                collisions = true;
+                cols.push_back( other->drawCollision( b ) ); // Draw collision
+                other->ballBounce( b, dt );
+            }
             if( b->ballCollision(other) )
             {
-                collisions = false;
+                collisions = true;
+                cols.push_back( b->drawCollision( other ) ); // Draw collision
                 b->ballBounce( other, dt );
-                other->ballBounce( b, dt );
-                b->update( dt );
-                other->update( dt );
             }
+            b->update( dt );
+            other->update( dt );
         }
 
-        if ( !collisions )
-            b->update( dt );
+        //printf("vx=%f, vy=%f \n", b->v.x, b->v.y);
 
-        somVelocity += b->v.x;
-        somVelocity += b->v.y;
+        //if ( !collisions )
+            //b->update( dt );
     }
-    double  vx = balls[0].get()->v.x;
-    double  vy = balls[0].get()->v.y;
-    double pvx = balls[0].get()->pv.x;
-    double pvy = balls[0].get()->pv.y;
-    double ax = vx-pvx;
-    double ay = (pvy-vy)/dt;
-    double as = (ax-ay)/dt;
-    //printf("ax=%f; ay=%f; as=%f; \n", ax, ay, as );
 }

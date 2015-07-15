@@ -18,10 +18,12 @@ class Ball
         Ball( vec2 p );
         void draw();
         void update( double dt );
+        void updateR( double r );
         void flip();
         void setRGB(int r, int g, int b);
 
         bool ballCollision( Ball* other );
+        vec2 drawCollision( Ball* other );
         void bounce( vec2 other );
         void ballBounce( Ball* other, double dt );
 

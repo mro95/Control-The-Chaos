@@ -93,6 +93,31 @@ class vec2 {
             return *this;
         }
 
+        // Division
+        vec2 operator/(const vec2& other)
+        {
+            return vec2(this->x / other.x ,this->y / other.y);
+        }
+
+        vec2 operator/(const double other)
+        {
+            return vec2(this->x / other,this->y / other);
+        }
+
+        vec2 operator/=(const vec2& other)
+        {
+            this->x /= other.x;
+            this->y /= other.y;
+            return *this;
+        }
+
+        vec2 operator/=(const float other)
+        {
+            this->x /= other;
+            this->y /= other;
+            return *this;
+        }
+
         // Dot product
         double dot(vec2 other)
         {

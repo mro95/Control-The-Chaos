@@ -8,18 +8,22 @@
 #include "main.hpp"
 #include "vec2.hpp"
 #include "stage.hpp"
+#include <GL/glut.h>
 
 
+bool Main::pause = false;
 
 Main::Main( )
 {
     running = true;
     window = NULL;
     debugMode = false;
+    pause = false;
 }
 
 int main(int argc, char* args[])
 {
+    glutInit(&argc, args);
     Main game;
     game.execute();
 }
@@ -44,8 +48,13 @@ int Main::execute( )
         dt = now - lastFrame;
         double game_dt = fmin(dt, MAX_DT);
         int reps = 0;
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        //render( );
         while(game_now < now) {
-            update( game_dt );
+            if( !pause )
+                update( game_dt );
             game_now += game_dt;
             reps++;
         }
@@ -56,7 +65,6 @@ int Main::execute( )
             if( debugMode )
                 printf("now=%8.4f  game_now=%8.4f  dt=%6.4f  game_dt=%6.4f  reps=%d fps=%6i \n",
                         now, game_now, dt, game_dt, reps, fps/fps_count);
-            
             fps_count = 0;
             fps=0;
         }
@@ -66,6 +74,9 @@ int Main::execute( )
         if(fps > 65) {
             usleep(5000);
         }
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
     }
     glfwDestroyWindow(window);
     glfwTerminate();
@@ -97,17 +108,7 @@ bool Main::initialize( )
     glfwSwapInterval(1);
 
     glfwSetKeyCallback(window, key_callback);
-
-    return true;
-}
-
-void Main::update( double dt )
-{
-    stage.update(dt);
-}
-
-void Main::render( )
-{
+    
     int widtha, heighta;
     glfwGetFramebufferSize(window, &widtha, &heighta);
 
@@ -126,23 +127,26 @@ void Main::render( )
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho( left, right, bottom, top, 1, -1 );
-    //glMatrixMode(GL_MODELVIEW);
 
-    //glDisable(GL_DEPTH_TEST);
 
-    // Blended points, lines, and polygons.
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA); 
 
-    //glEnable(GL_MULTISAMPLE);
-    //glEnable(GL_POINT_SMOOTH);
     glEnable(GL_LINE_SMOOTH);
-    //glLoadIdentity();
+
+    return true;
+}
+
+void Main::update( double dt )
+{
+    stage.update(dt);
+}
+
+void Main::render( )
+{
 
     stage.render();
 
-    glfwSwapBuffers(window);
-    glfwPollEvents();
 }
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -158,6 +162,14 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
             glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
             debugMode = true;
         }
+    }
+    
+    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {
+        
+        if(Main::pause)
+            Main::pause = false;
+        else
+            Main::pause = true;
     }
 }
 

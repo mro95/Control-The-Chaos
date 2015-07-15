@@ -14,6 +14,7 @@ class Main {
 
         Main( );
         int execute();
+        static bool pause;
 
     private:
 

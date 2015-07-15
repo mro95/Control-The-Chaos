@@ -22,7 +22,7 @@ bool StageCircle::ballCollision( Ball* ball )
 {
     int x = ball->p.x;
     int y = ball->p.y;
-    int r = this->r - ball->r * 2 ;
+    int r = this->r - ball->r;
     if( (x*x) + (y*y) > (r*r) ) {
         return true;
     }
