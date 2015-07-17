@@ -8,10 +8,11 @@ class Ball
 {
     public:
 
+        // Properties
         vec2 p = vec2(0,0);  // Position
         vec2 v = vec2(0,0);  // Velocity
         vec2 pv = vec2(0,0); // Previous Velocity
-        double r; // Radius
+        double r;            // Radius
         double mass = 5.0;
         Circle* circle;
 

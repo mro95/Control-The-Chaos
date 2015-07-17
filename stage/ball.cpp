@@ -59,7 +59,7 @@ vec2 Ball::drawCollision( Ball* other )
 
     vec2 point = vec2( (x1 * r2 + x2 * r1) / (r1 + r2), (y1 * r2 + y2 * r1) / (r1 + r2) );
     //vec2 point = vec2( (x2+x1)/2, (y2+x1)/2 );
-    printf("x:%f y:%f \n", point.x, point.y);
+    //printf("x:%f y:%f \n", point.x, point.y);
 
     return point;
 }
@@ -79,12 +79,22 @@ void Ball::bounce( vec2 other )
 
 void Ball::ballBounce( Ball* other, double dt )
 {
-    vec2 norm = (other->p + this->p)/2;
-    norm/2;
-    norm.normalize();
+    //vec2 norm = (other->p + this->p)/2;
+    //norm/2;
+    //norm.normalize();
+    //double v = (this->v.x * (this->mass – other->mass) + (2 * other->mass * other->v.x)) / (this->mass + this->mass);
+    
+    vec2 v1 = this->v;
+    vec2 v2 = other->v;
+    double mass1 = this->mass;
+    double mass2 = other->mass;
 
     pv = v;
-    v = pv - (norm * (vec2::dot2(pv,norm) * 2));
+    this->v = (v1 * (mass1 - mass2) + (v2 * ( mass2 * 2) )) / (mass1 + mass2);
+    other->v = (v2 * (mass2 - mass1) + (v1 * ( mass1 * 2) )) / (mass1 + mass2);
 
-    //printf("v.x=%f v.y=%f \n", v.x, v.y);
+    this->p += this->v * dt;
+    other->p += other->v * dt;
+
+    printf("vx=%f vy=%f \n", v.x, v.y);
 }

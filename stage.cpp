@@ -5,41 +5,42 @@
 #include <GL/glut.h>
 #include <list>
 
-#define max_balls 2
+#define max_balls 5
 
 Stage::Stage()
 {
     stageCircle = new StageCircle();
 
-    Ball* b1 = new Ball( vec2( 300, 0) );
+    Ball* b1 = new Ball( vec2( 200, 0) );
     b1->updateR(30);
-    b1->v = vec2(100, 0);
+    b1->v = vec2(-20, 0);
     b1->setRGB(0,0,255);
     balls[0].set(b1);
 
-    Ball* b2 = new Ball( vec2 (-100, 0) );
+    Ball* b2 = new Ball( vec2 (-200, 0) );
     b2->updateR(30);
-    b2->v = vec2(-20, 0);
+    b2->v = vec2(20, 0);
     b2->setRGB(0,255,0);
     balls[1].set(b2);
 
-    //Ball* b3 = new Ball( vec2(-250, 50) );
-    //b3->updateR(30);
-    //b3->v = vec2(200, -150);
-    //b1->setRGB(0,0,255);
-    //balls[2].set(b3);
+    Ball* b3 = new Ball( vec2(0, -200) );
+    b3->updateR(30);
+    b3->v = vec2(0, 20);
+    b1->setRGB(0,0,255);
+    balls[2].set(b3);
 
-    //for(int i=0;i<max_balls+1;i++) {
-    //    double x = rand() % 500 -250;
-    //    double y = rand() % 500 -250;
-    //    double dx = rand() % 500 -250;
-    //    double dy = rand() % 500 -250;
-    //    Ball* b1 = new Ball( vec2(x, y) );
-    //    b1->updateR(40);
-    //    b1->v = vec2(dx, dy);
-    //    b1->setRGB(0,0,255);
-    //    balls[i].set(b1);
-    //}
+    for(int i=0;i<max_balls+1;i++) {
+        double x = rand() % 500 -250;
+        double y = rand() % 500 -250;
+        double dx = x * 0.5;
+        double dy = y * 0.5;
+        Ball* b1 = new Ball( vec2(x, y) );
+        b1->updateR(i*10);
+        b1->mass = i*10;
+        b1->v = vec2(dx, dy);
+        b1->setRGB(0,0,255);
+        balls[i].set(b1);
+    }
     
     //cols.push_back( vec2(34,56) );
     //cols.push_back( vec2(79,0) );
@@ -55,16 +56,20 @@ void Stage::render()
         b->draw();
     }
 
+    int abc = false;
+
     // Draw collisions
-    for (std::list<vec2>::iterator it=cols.begin(); it != cols.end(); ++it) {
-        //std::cout << (*it).x << std::endl;
-        glColor3d(1,0,0);
-        glPointSize(15);
-        glBegin(GL_POINTS);
-        glVertex3d((*it).x, (*it).y, 0);
-        glEnd();
+    if (abc) {
+        for (std::list<vec2>::iterator it=cols.begin(); it != cols.end(); ++it) {
+            //std::cout << (*it).x << std::endl;
+            glColor3d(1,0,0);
+            glPointSize(15);
+            glBegin(GL_POINTS);
+            glVertex3d((*it).x, (*it).y, 0);
+            glEnd();
+        }
+        cols.clear();
     }
-    cols.clear();
 
     //glRasterPos2i(-500, -300);
 
@@ -100,13 +105,13 @@ void Stage::update( double dt )
         for(int j= i+1;j<max_balls;j++)
         {
             Ball* other = balls[j].get();
-            vec2 op = other->p;
-            if( other->ballCollision(b) )
-            {
-                collisions = true;
-                cols.push_back( other->drawCollision( b ) ); // Draw collision
-                other->ballBounce( b, dt );
-            }
+            // vec2 op = other->p;
+            // if( other->ballCollision(b) )
+            // {
+            //     collisions = true;
+            //     cols.push_back( other->drawCollision( b ) ); // Draw collision
+            //     other->ballBounce( b, dt );
+            // }
             if( b->ballCollision(other) )
             {
                 collisions = true;
@@ -117,9 +122,5 @@ void Stage::update( double dt )
             other->update( dt );
         }
 
-        //printf("vx=%f, vy=%f \n", b->v.x, b->v.y);
-
-        //if ( !collisions )
-            //b->update( dt );
     }
 }
