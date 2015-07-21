@@ -1,46 +1,40 @@
 #include "shapes/circle.hpp"
+#include "shapes/arc.hpp"
 #include "stage.hpp"
 #include "settings.hpp"
 #include "stage/stagecircle.hpp"
 #include <GL/glut.h>
 #include <list>
+#include <ctime>
 
-#define max_balls 5
-
+int max_balls = 2;
+int bbb = 0;
 Stage::Stage()
 {
+    std::srand(std::time(0));
     stageCircle = new StageCircle();
 
     Ball* b1 = new Ball( vec2( 200, 0) );
     b1->updateR(30);
-    b1->v = vec2(-20, 0);
+    b1->mass = 30*30;
+    b1->v = vec2(-200, 0);
     b1->setRGB(0,0,255);
     balls[0].set(b1);
 
     Ball* b2 = new Ball( vec2 (-200, 0) );
     b2->updateR(30);
-    b2->v = vec2(20, 0);
+    b2->mass = 30*30;
+    b2->v = vec2(200, 0);
     b2->setRGB(0,255,0);
     balls[1].set(b2);
 
     Ball* b3 = new Ball( vec2(0, -200) );
     b3->updateR(30);
-    b3->v = vec2(0, 20);
+    b3->mass = 30*30;
+    b3->v = vec2(0, 200);
     b1->setRGB(0,0,255);
     balls[2].set(b3);
 
-    for(int i=0;i<max_balls+1;i++) {
-        double x = rand() % 500 -250;
-        double y = rand() % 500 -250;
-        double dx = x * 0.5;
-        double dy = y * 0.5;
-        Ball* b1 = new Ball( vec2(x, y) );
-        b1->updateR(i*10);
-        b1->mass = i*10;
-        b1->v = vec2(dx, dy);
-        b1->setRGB(0,0,255);
-        balls[i].set(b1);
-    }
     
     //cols.push_back( vec2(34,56) );
     //cols.push_back( vec2(79,0) );
@@ -50,6 +44,9 @@ void Stage::render()
 {
 
     stageCircle->draw();
+
+    Arc g = Arc();
+    g.draw(0,0,60,-2.45,90,8);
 
     for(int i=0;i<max_balls;i++) {
         Ball* b = balls[i].get();
@@ -90,37 +87,39 @@ void Stage::update( double dt )
 {
     //if(glfwGetTime() > 10 && glfwGetTime() < 20)
     //    usleep(1000000);
-    for(int i=0;i<max_balls;i++) 
-    {
-        Ball* b = balls[i].get();
+    int loop = 0;
 
+    //while( loop < 5 ) {
         int collisions = false;
-        if( stageCircle->ballCollision(b) ) {
-            b->bounce( b->p );
-            b->update( dt );
-            //b->flip();
-        }
-
-        //for(int j=0;j<max_balls;j++)
-        for(int j= i+1;j<max_balls;j++)
+        for(int i=0;i<max_balls;i++) 
         {
-            Ball* other = balls[j].get();
-            // vec2 op = other->p;
-            // if( other->ballCollision(b) )
-            // {
-            //     collisions = true;
-            //     cols.push_back( other->drawCollision( b ) ); // Draw collision
-            //     other->ballBounce( b, dt );
-            // }
-            if( b->ballCollision(other) )
-            {
-                collisions = true;
-                cols.push_back( b->drawCollision( other ) ); // Draw collision
-                b->ballBounce( other, dt );
-            }
-            b->update( dt );
-            other->update( dt );
-        }
+            Ball* b = balls[i].get();
 
-    }
+            if( stageCircle->ballCollision(b) ) {
+                b->bounce( b->p );
+                b->update( dt );
+            }
+
+            //for(int j=0;j<max_balls;j++)
+            for(int j= i+1;j<max_balls;j++)
+            {
+                Ball* other = balls[j].get();
+                if( b->ballCollision(other) )
+                {
+                    cols.push_back( b->drawCollision( other ) ); // Draw collision
+                    b->ballBounce( other, dt );
+                    collisions = true;
+                    //other->update( dt );
+                    //b->update( dt );
+                }
+            }
+
+                b->update( dt );
+            if( !collisions ) {
+                //loop++;
+            }
+            else
+                loop = 5;
+        }
+    //}
 }

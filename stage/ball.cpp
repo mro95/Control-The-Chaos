@@ -43,6 +43,7 @@ bool Ball::ballCollision( Ball* other )
     double dy = other->p.y - this->p.y;
     double dr = other->r + this->r;
     if( dx*dx + dy*dy < dr*dr) {
+        //printf("aaa=%f \n ", dx*dx + dy*dy );
         return true;
     }
     return false;
@@ -93,8 +94,31 @@ void Ball::ballBounce( Ball* other, double dt )
     this->v = (v1 * (mass1 - mass2) + (v2 * ( mass2 * 2) )) / (mass1 + mass2);
     other->v = (v2 * (mass2 - mass1) + (v1 * ( mass1 * 2) )) / (mass1 + mass2);
 
+    // Minimal velocity
+    if(this->v.x >= 0)
+        this->v.x = fmax(20, this->v.x);
+    else if(this->v.x < 0)
+        this->v.x = fmin(20, this->v.x);
+
+    if(this->v.y >= 0)
+        this->v.y = fmax(20, this->v.y);
+    else if(this->v.y < 0)
+        this->v.y = fmin(20, this->v.y);
+
+    //other
+    if(other->v.x >= 0)
+        other->v.x = fmax(20, other->v.x);
+    else if(other->v.x < 0)
+        other->v.x = fmin(20, other->v.x);
+
+    if(other->v.y >= 0)
+        other->v.y = fmax(20, other->v.y);
+    else if(other->v.y < 0)
+        other->v.y = fmin(20, other->v.y);
+
+
     this->p += this->v * dt;
     other->p += other->v * dt;
 
-    printf("vx=%f vy=%f \n", v.x, v.y);
+    //printf("vx=%f vy=%f \n", v.x, v.y);
 }
