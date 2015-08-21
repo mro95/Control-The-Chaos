@@ -85,37 +85,20 @@ void Ball::ballBounce( Ball* other, double dt )
     //norm.normalize();
     //double v = (this->v.x * (this->mass – other->mass) + (2 * other->mass * other->v.x)) / (this->mass + this->mass);
     
+    this->p = other->p-(other->r*2);
+    //other->p = this->p-this->r;
+
     vec2 v1 = this->v;
     vec2 v2 = other->v;
     double mass1 = this->mass;
     double mass2 = other->mass;
 
+
     pv = v;
     this->v = (v1 * (mass1 - mass2) + (v2 * ( mass2 * 2) )) / (mass1 + mass2);
     other->v = (v2 * (mass2 - mass1) + (v1 * ( mass1 * 2) )) / (mass1 + mass2);
-
-    // Minimal velocity
-    if(this->v.x >= 0)
-        this->v.x = fmax(20, this->v.x);
-    else if(this->v.x < 0)
-        this->v.x = fmin(20, this->v.x);
-
-    if(this->v.y >= 0)
-        this->v.y = fmax(20, this->v.y);
-    else if(this->v.y < 0)
-        this->v.y = fmin(20, this->v.y);
-
-    //other
-    if(other->v.x >= 0)
-        other->v.x = fmax(20, other->v.x);
-    else if(other->v.x < 0)
-        other->v.x = fmin(20, other->v.x);
-
-    if(other->v.y >= 0)
-        other->v.y = fmax(20, other->v.y);
-    else if(other->v.y < 0)
-        other->v.y = fmin(20, other->v.y);
-
+    //this->v = vec2(0,0);
+    //other->v = vec2(0,0);
 
     this->p += this->v * dt;
     other->p += other->v * dt;
