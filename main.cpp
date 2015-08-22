@@ -23,7 +23,7 @@ Main::Main( )
 
 int main(int argc, char* args[])
 {
-    glutInit(&argc, args);
+    //glutInit(&argc, args);
     Main game;
     game.execute();
 }
