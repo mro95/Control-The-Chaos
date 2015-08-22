@@ -13,6 +13,6 @@ class StageCircle
 
         StageCircle();
         void draw();
-        bool ballCollision( Ball* ball );
+        bool ballCollision( Ball* ball, double dt );
 };
 #endif

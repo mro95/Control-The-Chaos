@@ -23,7 +23,7 @@ class Ball
         void flip();
         void setRGB(int r, int g, int b);
 
-        bool ballCollision( Ball* other );
+        bool ballCollision( Ball* other, double dt );
         vec2 drawCollision( Ball* other );
         void bounce( vec2 other );
         void ballBounce( Ball* other, double dt );

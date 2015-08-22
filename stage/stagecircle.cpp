@@ -18,14 +18,13 @@ void StageCircle::draw()
     circle->drawLineCircle();
 }
 
-bool StageCircle::ballCollision( Ball* ball )
+bool StageCircle::ballCollision( Ball* ball, double dt)
 {
-    int x = ball->p.x;
-    int y = ball->p.y;
+    int x = ball->p.x + (ball->v.x * dt);
+    int y = ball->p.y + (ball->v.y * dt);
     int r = this->r - ball->r;
     if( (x*x) + (y*y) > (r*r) ) {
         return true;
-        std::cout << "yup" << std::endl;
     }
     return false;
 }
