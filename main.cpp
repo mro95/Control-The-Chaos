@@ -12,6 +12,7 @@
 
 
 bool Main::pause = false;
+bool Main::smallPause = false;
 
 Main::Main( )
 {
@@ -19,6 +20,7 @@ Main::Main( )
     window = NULL;
     debugMode = false;
     pause = false;
+    smallPause = false;
 }
 
 int main(int argc, char* args[])
@@ -55,6 +57,10 @@ int Main::execute( )
         while(game_now < now) {
             if( !pause )
                 update( game_dt );
+            else if( smallPause )  {
+                update( game_dt );
+                smallPause = false;
+            }
             game_now += game_dt;
             reps++;
         }
@@ -170,6 +176,10 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
             Main::pause = false;
         else
             Main::pause = true;
+    }
+    
+    if (key == GLFW_KEY_TAB && action != GLFW_RELEASE) {
+        Main::smallPause = true;
     }
 }
 

@@ -39,8 +39,10 @@ void Ball::flip()
 
 bool Ball::ballCollision( Ball* other, double dt )
 {
-    double dx = (other->p.x - this->p.x) + (this->v.x * dt) + (other->v.x * dt);
-    double dy = (other->p.y - this->p.y) + (this->v.y * dt) + (other->v.y * dt);
+    //double dx = (other->p.x - this->p.x) + (this->v.x * dt) + (other->v.x * dt);
+    //double dy = (other->p.y - this->p.y) + (this->v.y * dt) + (other->v.y * dt);
+    double dx = (other->p.x - this->p.x);
+    double dy = (other->p.y - this->p.y);
     double dr = other->r + this->r;
     if( dx*dx + dy*dy < dr*dr) {
         //printf("aaa=%f \n ", dx*dx + dy*dy );
@@ -97,8 +99,6 @@ void Ball::ballBounce( Ball* other, double dt )
     pv = v;
     this->v = (v1 * (mass1 - mass2) + (v2 * ( mass2 * 2) )) / (mass1 + mass2);
     other->v = (v2 * (mass2 - mass1) + (v1 * ( mass1 * 2) )) / (mass1 + mass2);
-    //this->v = vec2(0,0);
-    //other->v = vec2(0,0);
 
     this->p += this->v * dt;
     other->p += other->v * dt;

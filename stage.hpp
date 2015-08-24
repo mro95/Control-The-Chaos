@@ -18,6 +18,9 @@ class Stage {
         Stage();
         void render();
         void update( double dt );
+        void checkCollisions( double dt );
+        bool constraints( double dt );
+        void dirtyCollisionHack( double dt );
         std::list<vec2> cols;
 
     private:
@@ -25,6 +28,10 @@ class Stage {
         StageCircle* stageCircle;
         Ball* ball1;
         Balls balls[];
+        void situation1();
+        void situation2();
+        void situation3();
+        void situation4();
 };
 
 #endif

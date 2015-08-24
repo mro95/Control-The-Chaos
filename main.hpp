@@ -15,6 +15,7 @@ class Main {
         Main( );
         int execute();
         static bool pause;
+        static bool smallPause;
 
     private:
 
