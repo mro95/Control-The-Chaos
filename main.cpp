@@ -19,7 +19,7 @@ Main::Main( )
     running = true;
     window = NULL;
     debugMode = false;
-    pause = false;
+    pause = true;
     smallPause = false;
 }
 

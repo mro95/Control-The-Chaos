@@ -13,7 +13,7 @@ Stage::Stage()
     std::srand(std::time(0));
     stageCircle = new StageCircle();
 
-    this->situation3();
+    this->situation2();
     std::cout << max_balls;
     //cols.push_back( vec2(34,56) );
     //cols.push_back( vec2(79,0) );
@@ -65,9 +65,11 @@ void Stage::render()
 void Stage::update( double dt )
 {
     // checking constraints
-    bool constraint = this->constraints(dt);
-    //if(!constraint)
-        //std::cout << "constraint error\n";
+    int constraint = this->constraints(dt);
+    if(constraint == -1)
+        std::cout << "constraint error wall\n";
+    if(constraint == -2)
+        std::cout << "constraint error ball\n";
 
     for(int i=0;i<max_balls;i++)
     {
@@ -77,22 +79,22 @@ void Stage::update( double dt )
     
     this->checkCollisions(dt);
 
-    bool constraint2 = this->constraints(dt);
+    int constraint2 = this->constraints(dt);
     int contraint_counter = 0;
-    while(!constraint2)
-    {
-        this->checkCollisions(dt);
-        constraint2 = this->constraints(dt);
-        contraint_counter++;
+    //while(constraint2 < 0)
+    //{
+    //    this->checkCollisions(dt);
+    //    constraint2 = this->constraints(dt);
+    //    contraint_counter++;
 
-        if(contraint_counter > 200) {
-            this->dirtyCollisionHack( dt );
-            constraint2 = true;
-        }
-    }
+    //    if(contraint_counter > 1000) {
+    //        this->dirtyCollisionHack( dt );
+    //        constraint2 = 0;
+    //    }
+    //}
 
-    //if( contraint_counter > 1 )
-        //std::cout << contraint_counter << std::endl;
+    if( contraint_counter > 1 )
+        std::cout << contraint_counter << std::endl;
 
 }
 
@@ -116,21 +118,24 @@ void Stage::checkCollisions( double dt )
     }
 }
 
-bool Stage::constraints( double dt )
+int Stage::constraints( double dt )
 {
     for(int i=0;i<max_balls;i++) {
         Ball* b = balls[i].get();
+        //b->setRGB(0,0,255);
         if( stageCircle->ballCollision(b, dt) ) {
-            return false;
+            //b->setRGB(255,0,0);
+            return -1;
         }
         for(int j= i+1;j<max_balls;j++) {
             Ball* other = balls[j].get();
             if( b->ballCollision(other, dt) ) {
-                return false;
+                //b->setRGB(0,255,0);
+                return -2;
             }
         }
     }
-    return true;
+    return 0;
 }
 
 void Stage::dirtyCollisionHack( double dt )
@@ -190,14 +195,14 @@ void Stage::situation2()
     Ball* b1 = new Ball( vec2( -200, 0) );
     b1->updateR(30);
     b1->mass = 30*30;
-    b1->v = vec2(-100, 0);
+    b1->v = vec2(500, 0);
     b1->setRGB(0,0,255);
     balls[0].set(b1);
 
     Ball* b2 = new Ball( vec2 (200, 0) );
     b2->updateR(30);
     b2->mass = 30*30;
-    b2->v = vec2(100, 0);
+    b2->v = vec2(-500, 0);
     b2->setRGB(0,255,0);
     balls[1].set(b2);
 
@@ -217,18 +222,18 @@ void Stage::situation3()
         double dy = 0;
 
         if(rand1 < 2) {
-            x = rand() % -250 + (i+30);
+            x = rand() % -200 + (i+30);
             dx = rand() % -350 + -200;
         }else{
-            x = rand() % 250 + (i+30);
+            x = rand() % 200 + (i+30);
             dx = rand() % 350 + 200;
         }
 
         if(rand2 < 2) {
-            y = rand() % -250 + (i+30);
+            y = rand() % -200 + (i+30);
             dy = rand() % -350 + -200;
         }else{
-            y = rand() % 250 + (i+30);
+            y = rand() % 200 + (i+30);
             dy = rand() % 350 + 200;
         }
 
