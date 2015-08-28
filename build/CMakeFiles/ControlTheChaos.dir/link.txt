@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -Wpedantic -std=c++1y   CMakeFiles/ControlTheChaos.dir/main.cpp.o CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o  -o ControlTheChaos/ControlTheChaos -rdynamic vendor/glfw/src/libglfw3.a -lrt -lm -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lXcursor -lGL -ldl 

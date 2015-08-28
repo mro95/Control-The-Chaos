@@ -1,0 +1,3 @@
+/home/mro95/projects/control-the-chaos/build/CMakeFiles/ControlTheChaos.dir
+/home/mro95/projects/control-the-chaos/build/vendor/glfw/CMakeFiles/uninstall.dir
+/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir
