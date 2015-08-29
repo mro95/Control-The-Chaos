@@ -13,7 +13,7 @@ Stage::Stage()
     std::srand(std::time(0));
     stageCircle = new StageCircle();
 
-    this->situation2();
+    this->situation1();
     std::cout << max_balls;
     //cols.push_back( vec2(34,56) );
     //cols.push_back( vec2(79,0) );

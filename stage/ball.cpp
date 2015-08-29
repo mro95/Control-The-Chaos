@@ -41,14 +41,14 @@ bool Ball::ballCollision( Ball* other, double dt )
 {
     vec2 tp = this->p + (this->v * dt);
     vec2 op = other->p + (other->v * dt);
-
-    double dx = (op.x - tp.x);
-    double dy = (op.y - tp.y);
+    //double dx = (op.x - tp.x);
+    //double dy = (op.y - tp.y);
 
     //double dx = (other->p.x - this->p.x);
     //double dy = (other->p.y - this->p.y);
     double dr = other->r + this->r;
-    if( dx*dx + dy*dy < dr*dr) {
+    
+    if ((op - tp).length2() < dr * dr) {
         //printf("aaa=%f \n ", dx*dx + dy*dy );
         return true;
     }
