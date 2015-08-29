@@ -1,3 +1,0 @@
-/Users/maarten/projects/Control-The-Chaos/build/CMakeFiles/ControlTheChaos.dir
-/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/CMakeFiles/uninstall.dir
-/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir
