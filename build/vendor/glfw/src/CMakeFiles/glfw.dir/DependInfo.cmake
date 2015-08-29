@@ -4,21 +4,20 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/context.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/context.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/glx_context.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/init.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/init.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/input.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/input.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/linux_joystick.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/monitor.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/monitor.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/posix_time.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/posix_tls.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/posix_tls.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/window.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/window.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/x11_init.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/x11_monitor.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/x11_window.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o"
-  "/home/mro95/projects/control-the-chaos/vendor/glfw/src/xkb_unicode.c" "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/cocoa_init.m" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/cocoa_monitor.m" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/cocoa_window.m" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/context.c" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/context.c.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/init.c" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/init.c.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/input.c" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/input.c.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/iokit_joystick.m" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/iokit_joystick.m.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/mach_time.c" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/mach_time.c.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/monitor.c" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/monitor.c.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/nsgl_context.m" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/posix_tls.c" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/posix_tls.c.o"
+  "/Users/maarten/projects/Control-The-Chaos/vendor/glfw/src/window.c" "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/window.c.o"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C

@@ -4,15 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/mro95/projects/control-the-chaos/library/vec2.cpp" "/home/mro95/projects/control-the-chaos/build/CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o"
-  "/home/mro95/projects/control-the-chaos/main.cpp" "/home/mro95/projects/control-the-chaos/build/CMakeFiles/ControlTheChaos.dir/main.cpp.o"
+  "/Users/maarten/projects/Control-The-Chaos/library/vec2.cpp" "/Users/maarten/projects/Control-The-Chaos/build/CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o"
+  "/Users/maarten/projects/Control-The-Chaos/main.cpp" "/Users/maarten/projects/Control-The-Chaos/build/CMakeFiles/ControlTheChaos.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "GLFW_INCLUDE_NONE"
-  "PROJECT_SOURCE_DIR=\"/home/mro95/projects/control-the-chaos\""
+  "PROJECT_SOURCE_DIR=\"/Users/maarten/projects/Control-The-Chaos\""
   )
 
 # The include file search paths:
@@ -22,5 +22,5 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/mro95/projects/control-the-chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )

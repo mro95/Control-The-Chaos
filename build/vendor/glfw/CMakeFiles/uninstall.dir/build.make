@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.3.0/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/Cellar/cmake/3.3.0/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mro95/projects/control-the-chaos
+CMAKE_SOURCE_DIR = /Users/maarten/projects/Control-The-Chaos
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mro95/projects/control-the-chaos/build
+CMAKE_BINARY_DIR = /Users/maarten/projects/Control-The-Chaos/build
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/mro95/projects/control-the-chaos/build
 include vendor/glfw/CMakeFiles/uninstall.dir/progress.make
 
 vendor/glfw/CMakeFiles/uninstall:
-	cd /home/mro95/projects/control-the-chaos/build/vendor/glfw && /usr/bin/cmake -P /home/mro95/projects/control-the-chaos/build/vendor/glfw/cmake_uninstall.cmake
+	cd /Users/maarten/projects/Control-The-Chaos/build/vendor/glfw && /usr/local/Cellar/cmake/3.3.0/bin/cmake -P /Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/cmake_uninstall.cmake
 
 uninstall: vendor/glfw/CMakeFiles/uninstall
 uninstall: vendor/glfw/CMakeFiles/uninstall.dir/build.make
@@ -67,10 +67,10 @@ vendor/glfw/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : vendor/glfw/CMakeFiles/uninstall.dir/build
 
 vendor/glfw/CMakeFiles/uninstall.dir/clean:
-	cd /home/mro95/projects/control-the-chaos/build/vendor/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /Users/maarten/projects/Control-The-Chaos/build/vendor/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : vendor/glfw/CMakeFiles/uninstall.dir/clean
 
 vendor/glfw/CMakeFiles/uninstall.dir/depend:
-	cd /home/mro95/projects/control-the-chaos/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mro95/projects/control-the-chaos /home/mro95/projects/control-the-chaos/vendor/glfw /home/mro95/projects/control-the-chaos/build /home/mro95/projects/control-the-chaos/build/vendor/glfw /home/mro95/projects/control-the-chaos/build/vendor/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/maarten/projects/Control-The-Chaos/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/maarten/projects/Control-The-Chaos /Users/maarten/projects/Control-The-Chaos/vendor/glfw /Users/maarten/projects/Control-The-Chaos/build /Users/maarten/projects/Control-The-Chaos/build/vendor/glfw /Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : vendor/glfw/CMakeFiles/uninstall.dir/depend
 

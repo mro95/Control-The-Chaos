@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.3.0/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /usr/local/Cellar/cmake/3.3.0/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mro95/projects/control-the-chaos
+CMAKE_SOURCE_DIR = /Users/maarten/projects/Control-The-Chaos
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mro95/projects/control-the-chaos/build
+CMAKE_BINARY_DIR = /Users/maarten/projects/Control-The-Chaos/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ControlTheChaos.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/ControlTheChaos.dir/flags.make
 
 CMakeFiles/ControlTheChaos.dir/main.cpp.o: CMakeFiles/ControlTheChaos.dir/flags.make
 CMakeFiles/ControlTheChaos.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mro95/projects/control-the-chaos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ControlTheChaos.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ControlTheChaos.dir/main.cpp.o -c /home/mro95/projects/control-the-chaos/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maarten/projects/Control-The-Chaos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ControlTheChaos.dir/main.cpp.o"
+	/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ControlTheChaos.dir/main.cpp.o -c /Users/maarten/projects/Control-The-Chaos/main.cpp
 
 CMakeFiles/ControlTheChaos.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ControlTheChaos.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/mro95/projects/control-the-chaos/main.cpp > CMakeFiles/ControlTheChaos.dir/main.cpp.i
+	/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/maarten/projects/Control-The-Chaos/main.cpp > CMakeFiles/ControlTheChaos.dir/main.cpp.i
 
 CMakeFiles/ControlTheChaos.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ControlTheChaos.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/mro95/projects/control-the-chaos/main.cpp -o CMakeFiles/ControlTheChaos.dir/main.cpp.s
+	/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/maarten/projects/Control-The-Chaos/main.cpp -o CMakeFiles/ControlTheChaos.dir/main.cpp.s
 
 CMakeFiles/ControlTheChaos.dir/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/ControlTheChaos.dir/main.cpp.o.provides.build: CMakeFiles/ControlTheC
 
 CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o: CMakeFiles/ControlTheChaos.dir/flags.make
 CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o: ../library/vec2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mro95/projects/control-the-chaos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o -c /home/mro95/projects/control-the-chaos/library/vec2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maarten/projects/Control-The-Chaos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o"
+	/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o -c /Users/maarten/projects/Control-The-Chaos/library/vec2.cpp
 
 CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/mro95/projects/control-the-chaos/library/vec2.cpp > CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.i
+	/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/maarten/projects/Control-The-Chaos/library/vec2.cpp > CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.i
 
 CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/mro95/projects/control-the-chaos/library/vec2.cpp -o CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.s
+	/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/maarten/projects/Control-The-Chaos/library/vec2.cpp -o CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.s
 
 CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o.requires:
 
@@ -117,17 +117,8 @@ ControlTheChaos/ControlTheChaos: CMakeFiles/ControlTheChaos.dir/main.cpp.o
 ControlTheChaos/ControlTheChaos: CMakeFiles/ControlTheChaos.dir/library/vec2.cpp.o
 ControlTheChaos/ControlTheChaos: CMakeFiles/ControlTheChaos.dir/build.make
 ControlTheChaos/ControlTheChaos: vendor/glfw/src/libglfw3.a
-ControlTheChaos/ControlTheChaos: /usr/lib64/librt.so
-ControlTheChaos/ControlTheChaos: /usr/lib64/libm.so
-ControlTheChaos/ControlTheChaos: /usr/lib64/libX11.so
-ControlTheChaos/ControlTheChaos: /usr/lib64/libXrandr.so
-ControlTheChaos/ControlTheChaos: /usr/lib64/libXinerama.so
-ControlTheChaos/ControlTheChaos: /usr/lib64/libXi.so
-ControlTheChaos/ControlTheChaos: /usr/lib64/libXxf86vm.so
-ControlTheChaos/ControlTheChaos: /usr/lib64/libXcursor.so
-ControlTheChaos/ControlTheChaos: /usr/lib64/libGL.so
 ControlTheChaos/ControlTheChaos: CMakeFiles/ControlTheChaos.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mro95/projects/control-the-chaos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ControlTheChaos/ControlTheChaos"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/maarten/projects/Control-The-Chaos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ControlTheChaos/ControlTheChaos"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ControlTheChaos.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -145,6 +136,6 @@ CMakeFiles/ControlTheChaos.dir/clean:
 .PHONY : CMakeFiles/ControlTheChaos.dir/clean
 
 CMakeFiles/ControlTheChaos.dir/depend:
-	cd /home/mro95/projects/control-the-chaos/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mro95/projects/control-the-chaos /home/mro95/projects/control-the-chaos /home/mro95/projects/control-the-chaos/build /home/mro95/projects/control-the-chaos/build /home/mro95/projects/control-the-chaos/build/CMakeFiles/ControlTheChaos.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/maarten/projects/Control-The-Chaos/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/maarten/projects/Control-The-Chaos /Users/maarten/projects/Control-The-Chaos /Users/maarten/projects/Control-The-Chaos/build /Users/maarten/projects/Control-The-Chaos/build /Users/maarten/projects/Control-The-Chaos/build/CMakeFiles/ControlTheChaos.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ControlTheChaos.dir/depend
 

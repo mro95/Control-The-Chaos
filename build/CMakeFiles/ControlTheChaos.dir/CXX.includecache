@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/mro95/projects/control-the-chaos/library/json.hpp
+/Users/maarten/projects/Control-The-Chaos/library/json.hpp
 algorithm
 -
 array
@@ -48,7 +48,7 @@ sys/types.h
 basetsd.h
 -
 
-/home/mro95/projects/control-the-chaos/library/settings.hpp
+/Users/maarten/projects/Control-The-Chaos/library/settings.hpp
 fstream
 -
 string
@@ -57,18 +57,22 @@ streambuf
 -
 libgen.h
 -
+direct.h
+-
+unistd.h
+-
 json.hpp
-/home/mro95/projects/control-the-chaos/library/json.hpp
+/Users/maarten/projects/Control-The-Chaos/library/json.hpp
 
-/home/mro95/projects/control-the-chaos/library/vec2.cpp
+/Users/maarten/projects/Control-The-Chaos/library/vec2.cpp
 
-/home/mro95/projects/control-the-chaos/main.cpp
+/Users/maarten/projects/Control-The-Chaos/main.cpp
 main.hpp
-/home/mro95/projects/control-the-chaos/main.hpp
+/Users/maarten/projects/Control-The-Chaos/main.hpp
 library/settings.hpp
-/home/mro95/projects/control-the-chaos/library/settings.hpp
+/Users/maarten/projects/Control-The-Chaos/library/settings.hpp
 
-/home/mro95/projects/control-the-chaos/main.hpp
+/Users/maarten/projects/Control-The-Chaos/main.hpp
 iostream
 -
 unistd.h

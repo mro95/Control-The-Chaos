@@ -1,9 +1,8 @@
-
 #include "main.hpp"
 #include "library/settings.hpp"
-int main(int argc, char* args[])
+int main(int argc, char* argv[])
 {
     Settings settings;
-    settings.loadConfigFile();
+    settings.loadConfigFile(argv);
     return 0;
 }

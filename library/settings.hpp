@@ -5,6 +5,12 @@
 #include <string>
 #include <streambuf>
 #include <libgen.h>
+#ifdef WINDOWS
+    #include <direct.h>
+    #define getcwd _getcwd
+#else
+    #include <unistd.h>
+#endif
 
 #include "json.hpp"
 
@@ -19,12 +25,28 @@ class Settings {
         static const int windowWidth = 1280;
         static const int windowHeight = 720;
 
-        void loadConfigFile()
+        void loadConfigFile(char** argv)
         {
+            std::string s = argv[0];
+            std::string token = s.substr(2, s.find("/"));
+
+            std::cout << token << std::endl;
+
+            char cCurrentPath[10000];
+
+            if (!getcwd(cCurrentPath, sizeof(cCurrentPath)))
+            {
+                return;
+            }
+
+            cCurrentPath[sizeof(cCurrentPath) - 1] = '\0'; /* not really required */
+
+            printf ("The current working directory is %s \n", cCurrentPath);
+
+
             string path = get_selfpath();
-            string filename = path + "/config.json";
-            char* a = '.';
-            std::cout << dirname(".") << std::endl;
+            string filename = "config.json";
+
             std::ifstream t(filename);
             if( t ) {
                 string str((std::istreambuf_iterator<char>(t)),

@@ -1,4 +1,4 @@
-# Install script for directory: /home/mro95/projects/control-the-chaos
+# Install script for directory: /Users/maarten/projects/Control-The-Chaos
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,14 +27,9 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
-# Install shared libraries without execute permission?
-if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "0")
-endif()
-
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/mro95/projects/control-the-chaos/build/vendor/glfw/cmake_install.cmake")
+  include("/Users/maarten/projects/Control-The-Chaos/build/vendor/glfw/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +41,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/mro95/projects/control-the-chaos/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/maarten/projects/Control-The-Chaos/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
