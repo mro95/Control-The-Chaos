@@ -1,3 +1,6 @@
+#include <GL/glut.h>
+#include <GLFW/glfw3.h>
+
 #include "main.hpp"
 #include "library/settings.hpp"
 #include "game/GameLoop.hpp"

@@ -1,15 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 project(ControlTheChaos)
 
-if(WIN32)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
-elseif(APPLE)
-    set(CMAKE_CXX_FLAGS "-framework OpenGL -Wall -Wextra -Wpedantic -std=c++1y")
-else()
-    set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic -std=c++1y")
-set(GLAD_LIBRARIES dl)
-endif()
-
 find_package(OpenGL REQUIRED)
 include_directories( ${OPENGL_INCLUDE_DIRS} )
 
@@ -17,13 +8,27 @@ option(GLFW_BUILD_DOCS OFF)
 option(GLFW_BUILD_EXAMPLES OFF)
 option(GLFW_BUILD_TESTS OFF)
 add_subdirectory(vendor/glfw)
-include_directories(vendor/glfw/include/)
+
+if(MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -std=c++11")
+    if(NOT WIN32)
+        set(GLAD_LIBRARIES dl)
+    endif()
+endif()
+
+include_directories(game/
+                    library/
+                    vendor/glfw/include/)
 
 
 file(GLOB PROJECT_HEADERS *.hpp
-                          library/*.hpp)
+                          library/*.hpp
+                          game/*.hpp)
 file(GLOB PROJECT_SOURCES *.cpp
-                          library/*.cpp)
+                          library/*.cpp
+                          game/*.cpp)
 
 file(GLOB PROJECT_CONFIGS CMakeLists.txt
                           Readme.md

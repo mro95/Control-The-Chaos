@@ -47,7 +47,7 @@ class GameLoop {
 
             glfwSwapInterval(1);
 
-            glfwSetKeyCallback(window, key_callback);
+            //glfwSetKeyCallback(window, key_callback);
             
             int bufferWidth, bufferHeight;
             glfwGetFramebufferSize(window, &bufferWidth, &bufferHeight);
