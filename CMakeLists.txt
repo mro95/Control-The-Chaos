@@ -2,18 +2,23 @@ cmake_minimum_required(VERSION 3.0)
 project(ControlTheChaos)
 
 if(WIN32)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+elseif(APPLE)
+    set(CMAKE_CXX_FLAGS "-framework OpenGL -Wall -Wextra -Wpedantic -std=c++1y")
 else()
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic -std=c++1y")
+    set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic -std=c++1y")
 set(GLAD_LIBRARIES dl)
 endif()
+
+find_package(OpenGL REQUIRED)
+include_directories( ${OPENGL_INCLUDE_DIRS} )
 
 option(GLFW_BUILD_DOCS OFF)
 option(GLFW_BUILD_EXAMPLES OFF)
 option(GLFW_BUILD_TESTS OFF)
 add_subdirectory(vendor/glfw)
-
 include_directories(vendor/glfw/include/)
+
 
 file(GLOB PROJECT_HEADERS *.hpp
                           library/*.hpp)
@@ -35,7 +40,7 @@ add_definitions(-DGLFW_INCLUDE_NONE
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_SHADERS} ${PROJECT_CONFIGS}
                                ${VENDORS_SOURCES})
-target_link_libraries(${PROJECT_NAME} glfw ${GLFW_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} glfw ${GLFW_LIBRARIES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
