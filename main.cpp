@@ -9,6 +9,7 @@ int main(int argc, char* argv[])
     Settings settings;
     settings.loadConfigFile(argv);
 
+    glutInit(&argc, argv);
     GameLoop game;
     game.settings = &settings;
     game.execute();
