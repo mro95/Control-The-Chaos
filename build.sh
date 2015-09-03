@@ -1,6 +1,8 @@
 #!/bin/bash
-cd build;
-cmake ..;
+cd build
+cmake ..
 make;
-cd ControlTheChaos;
-./ControlTheChaos;
+if [[ "$?" == 0 ]]; then
+    cd ControlTheChaos
+    ./ControlTheChaos
+fi
