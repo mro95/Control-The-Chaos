@@ -4,6 +4,7 @@
 #include <math.h>
 #include <GLFW/glfw3.h>
 #include "../library/settings.hpp"
+#include "../library/text.hpp"
 
 # define PI           3.14159265358979323846  /* pi */
 # define TAU          6.28318530717958647692  /* tau */
@@ -87,7 +88,7 @@ class GameLoop {
             /* Initialize the library */
             if (!glfwInit())
                 return false;
-            
+
             int windowHeight = settings->getWindowHeight();
             int windowWidth = settings->getWindowWidth();
 
@@ -95,7 +96,7 @@ class GameLoop {
             glfwWindowHint(GLFW_FLOATING, true);
             glfwWindowHint(GLFW_RESIZABLE, false);
             glfwWindowHint(GLFW_SAMPLES, 16);
-            window = glfwCreateWindow(windowWidth, windowHeight, "ControlTheChaos", NULL, NULL);
+            window = glfwCreateWindow(windowWidth, windowHeight, "Control The Chaos", NULL, NULL);
             if (!window)
             {
                 glfwTerminate();
@@ -108,7 +109,7 @@ class GameLoop {
             glfwSwapInterval(1);
 
             glfwSetKeyCallback(window, keyboardInput);
-            
+
             int bufferWidth, bufferHeight;
             glfwGetFramebufferSize(window, &bufferWidth, &bufferHeight);
 
@@ -121,7 +122,7 @@ class GameLoop {
 
             glClearColor(1, 1, 1, 1);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            
+
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
             glOrtho( left, right, bottom, top, 1, -1 );
@@ -136,27 +137,15 @@ class GameLoop {
         void render()
         {
             if (mainmenu) {
-                mainmenuRender();
+                //mainmenuRender();
             }
-        }
+            Text text;
+            double sx = 10;
+            double sy = 10;
+            text.loadFontLibs();
+            text.render("The Small Texture Scaled Fox Jumps Over The Lazy Dog",
+                -1 + 8 * sx,   1 - 175 * sy,   sx * 0.5, sy * 0.5);
 
-        void printtext(int x, int y, string String)
-        {
-            glMatrixMode(GL_MODELVIEW);
-            glPushMatrix();
-            glLoadIdentity();
-            glPushAttrib(GL_DEPTH_TEST);
-            glDisable(GL_DEPTH_TEST);
-            glRasterPos2i(x,y);
-            for (int i=0; i<String.size(); i++)
-            {
-                glutBitmapCharacter(GLUT_BITMAP_9_BY_15, String[i]);
-            }
-            glPopAttrib();
-            glMatrixMode(GL_PROJECTION);
-            glPopMatrix();
-            glMatrixMode(GL_MODELVIEW);
-            glPopMatrix();
         }
 
         void update( double dt )

@@ -23,7 +23,33 @@ using string = std::string;
 class Settings {
     public:
 
-        void loadConfigFile(char** argv)
+        void findConfigPath()
+        {
+            // TODO: Windows support
+            // TODO: if files not extist create default files
+            std::string homepath = getenv("HOME");
+            this->path = homepath+"/.config/control-the-chaos/";
+        }
+
+
+        void loadConfigFile()
+        {
+            std::cout << "Loading config file..." << std::endl;
+            string filename = this->path+"config.json";
+
+            std::ifstream stream(filename);
+            if( stream ) {
+                string rawConfigData((std::istreambuf_iterator<char>(stream)),
+                                      std::istreambuf_iterator<char>());
+                parseJsonConfig(rawConfigData);
+            } else {
+                std::cout << "config file not found";
+            }
+
+        }
+        
+
+        void loadConfigFile2(char** argv)
         {
             std::cout << "Loading config file..." << std::endl;
             string argv0 = argv[0];
@@ -66,8 +92,10 @@ class Settings {
 
     private:
 
-        int windowWidth = 1280;
-        int windowHeight = 720;
+        string path;
+        int windowWidth;
+        int windowHeight;
+
 
         std::string getPath(string argv0)
         {
