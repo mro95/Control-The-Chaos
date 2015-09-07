@@ -120,9 +120,6 @@ function love.update(dt)
 end
 
 function love.draw()
-    --love.graphics.setColor(255, 0, 0);
-    --love.graphics.print("Control The Chaos",0,0)
-    --love.graphics.setFont(fonts[48])
 
     ww = love.graphics.getWidth()
     wh = love.graphics.getHeight()
@@ -145,6 +142,9 @@ function love.draw()
     end
 
 
+    love.graphics.setColor(255, 255, 255);
+    love.graphics.setFont(fonts[32])
+    love.graphics.print("Press spacebar to continue",ww/2-380,wh/2+200,0,1,1)
     --
     love.graphics.setColor(255, 255, 255)
     love.graphics.translate( ww/2, wh/2 );
@@ -153,7 +153,8 @@ function love.draw()
     -- Logo
     logoWidth = logo:getWidth()
     logoHeight = logo:getHeight()
-    love.graphics.draw(logo, 0,0,0,1,1,logoWidth / 2,logoHeight / 2)
+    love.graphics.draw(logo, 0,-50,0,1,1,logoWidth / 2,logoHeight / 2)
+    
 end
 
 function love.keypressed(key)
