@@ -1,5 +1,5 @@
-#include <iostream>
-#include "../vec2.hpp"
+#include <GL/gl.h>
+#include <GLFW/glfw3.h>
 #include "circle.hpp"
 
 Circle::Circle(vec2 p, int r)

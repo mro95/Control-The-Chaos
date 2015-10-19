@@ -1,8 +1,8 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include "../vec2.hpp"
-#include "../shapes/circle.hpp"
+#include "../library/vec2.hpp"
+#include "shapes/circle.hpp"
 
 class Ball
 {

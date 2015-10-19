@@ -6,6 +6,8 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
+
+
 #include "main.hpp"
 #include "library/settings.hpp"
 #include "game/GameLoop.hpp"

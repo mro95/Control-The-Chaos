@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include "../library/settings.hpp"
 #include "../library/text.hpp"
+#include "../gamemodes/SinglePlayer.hpp"
 
 # define PI           3.14159265358979323846  /* pi */
 # define TAU          6.28318530717958647692  /* tau */
@@ -20,6 +21,9 @@ class GameLoop {
         bool mainmenu = true;
         GLFWwindow* window;
         Settings* settings;
+        Text text;
+
+        SinglePlayer gamemode;
 
         int execute()
         {
@@ -131,26 +135,19 @@ class GameLoop {
 
             glEnable(GL_LINE_SMOOTH);
 
+            text.init();
+
             return true;
         }
 
         void render()
         {
-            if (mainmenu) {
-                //mainmenuRender();
-            }
-            Text text;
-            double sx = 10;
-            double sy = 10;
-            text.loadFontLibs();
-            text.render("The Small Texture Scaled Fox Jumps Over The Lazy Dog",
-                -1 + 8 * sx,   1 - 175 * sy,   sx * 0.5, sy * 0.5);
-
+            this->gamemode.render();
         }
 
         void update( double dt )
         {
-
+            this->gamemode.update( dt );
         }
 
         static void keyboardInput(GLFWwindow* window, int key, int scancode, int action, int mods)

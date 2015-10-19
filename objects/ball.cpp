@@ -1,6 +1,4 @@
 #include "ball.hpp"
-#include "../shapes/circle.hpp"
-#include "../settings.hpp"
 
 Ball::Ball(vec2 p)
 {

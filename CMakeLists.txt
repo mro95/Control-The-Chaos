@@ -22,15 +22,24 @@ include_directories(/usr/include/freetype2/)
 include_directories(/usr/include/GL/)
 
 include_directories(game/
+                    gamemodes/
+                    objects/
+                    objects/shapes
                     library/
                     vendor/glfw/include/)
 
 
 file(GLOB PROJECT_HEADERS *.hpp
                           library/*.hpp
+                          objects/*.hpp
+                          objects/shapes/*.hpp
+                          gamemodes/*.hpp
                           game/*.hpp)
 file(GLOB PROJECT_SOURCES *.cpp
                           library/*.cpp
+                          objects/*.cpp
+                          objects/shapes/*.cpp
+                          gamemodes/*.cpp
                           game/*.cpp)
 
 file(GLOB PROJECT_CONFIGS CMakeLists.txt
@@ -48,7 +57,7 @@ add_definitions(-DGLFW_INCLUDE_NONE
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_SHADERS} ${PROJECT_CONFIGS}
                                ${VENDORS_SOURCES})
-                           target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} freetype GL GLU glut glfw ${GLFW_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} freetype GL GLU glfw m ${GLFW_LIBRARIES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})

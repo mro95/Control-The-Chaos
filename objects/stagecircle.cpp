@@ -1,12 +1,11 @@
 #include <iostream>
-#include "../shapes/circle.hpp"
+#include "shapes/circle.hpp"
 #include "stagecircle.hpp"
 #include "ball.hpp"
-#include "../settings.hpp"
 
 StageCircle::StageCircle()
 {
-    this->r = Settings::windowHeight/2-10;
+    this->r = 0; // need fix
 
     circle = new Circle(p,r);
     circle->setRGB(0,0,0);

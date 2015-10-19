@@ -5,8 +5,7 @@
 #include <cstdio>
 #include <iostream>
 #include <unistd.h>
-#include <GLFW/glfw3.h>
-#include "../vec2.hpp"
+#include "../../library/vec2.hpp"
 
 # define PI           3.14159265358979323846  /* pi */
 # define TAU          6.28318530717958647692  /* tau */
