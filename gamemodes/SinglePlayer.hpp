@@ -1,6 +1,7 @@
 #ifndef _SinglePlayer_H_
     #define _SinglePlayer_H_
 
+#include <list>
 #include "../objects/ball.hpp"
 #include "../library/vec2.hpp"
 
@@ -17,6 +18,9 @@ class SinglePlayer {
         void render();
 
         Ball* b1 ;
+        
+        std::list<Ball*> Balls;
+
 
 };
 #endif

@@ -134,6 +134,7 @@ class GameLoop {
             glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA); 
 
             glEnable(GL_LINE_SMOOTH);
+            glClearColor( 0, 0, 0, 1);
 
             text.init();
 
@@ -147,7 +148,10 @@ class GameLoop {
 
         void update( double dt )
         {
-            this->gamemode.update( dt );
+            double dt_t = dt/10;
+            for(int i; i<=10; i++) {
+                this->gamemode.update( dt_t );
+            }
         }
 
         static void keyboardInput(GLFWwindow* window, int key, int scancode, int action, int mods)
