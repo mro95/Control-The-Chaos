@@ -37,6 +37,7 @@ class Stage {
         void situation2();
         void situation3();
         void situation4();
+        double randNr();
 };
 
 #endif

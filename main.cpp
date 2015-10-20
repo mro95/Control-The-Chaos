@@ -25,6 +25,7 @@ Main::Main( )
 
 int main(int argc, char* args[])
 {
+    srand (time(NULL));
     //glutInit(&argc, args);
     Main game;
     game.execute();
@@ -145,14 +146,16 @@ bool Main::initialize( )
 
 void Main::update( double dt )
 {
-    stage.update(dt);
+    int steps = 50;
+    double dt_t = dt/steps;
+    for(int i; i<=steps; i++) {
+        stage.update(dt_t);
+    }
 }
 
 void Main::render( )
 {
-
     stage.render();
-
 }
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)

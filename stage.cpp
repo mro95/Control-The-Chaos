@@ -13,7 +13,7 @@ Stage::Stage()
     std::srand(std::time(0));
     stageCircle = new StageCircle();
 
-    this->situation1();
+    this->situation3();
     std::cout << max_balls;
     //cols.push_back( vec2(34,56) );
     //cols.push_back( vec2(79,0) );
@@ -79,22 +79,22 @@ void Stage::update( double dt )
     
     this->checkCollisions(dt);
 
-    int constraint2 = this->constraints(dt);
-    int contraint_counter = 0;
-    //while(constraint2 < 0)
-    //{
-    //    this->checkCollisions(dt);
-    //    constraint2 = this->constraints(dt);
-    //    contraint_counter++;
+    // int constraint2 = this->constraints(dt);
+    // int contraint_counter = 0;
+    // while(constraint2 < 0)
+    // {
+    //     this->checkCollisions(dt);
+    //     constraint2 = this->constraints(dt);
+    //     contraint_counter++;
 
-    //    if(contraint_counter > 1000) {
-    //        this->dirtyCollisionHack( dt );
-    //        constraint2 = 0;
-    //    }
-    //}
+    //     if(contraint_counter > 1000) {
+    //         this->dirtyCollisionHack( dt );
+    //         constraint2 = 0;
+    //     }
+    // }
 
-    if( contraint_counter > 1 )
-        std::cout << contraint_counter << std::endl;
+    //if( contraint_counter > 1 )
+       // std::cout << contraint_counter << std::endl;
 
 }
 
@@ -209,9 +209,9 @@ void Stage::situation2()
 }
 void Stage::situation3()
 {
-    max_balls = 20;
+    max_balls = 40;
 
-    for(int i=0; i<21; i++) 
+    for(int i=0; i<=max_balls; i++) 
     {
         double rand1 = rand() % 4+1;
         double rand2 = rand() % 4+1;
@@ -221,29 +221,41 @@ void Stage::situation3()
         double dx = 0;
         double dy = 0;
 
-        if(rand1 < 2) {
-            x = rand() % -200 + (i+30);
-            dx = rand() % -350 + -200;
-        }else{
-            x = rand() % 200 + (i+30);
-            dx = rand() % 350 + 200;
+
+        bool a = false;
+
+        while(!a) {
+            x = randNr();
+            dx = randNr();
+            y = randNr();
+            dy = randNr();
+
+            Ball* b1 = new Ball( vec2( x, y) );
+            b1->updateR(15);
+            b1->mass = 15*15;
+            b1->v = vec2(dx, dy);
+            b1->setRGB(0,0,255);
+
+            bool t = false;
+            for(int j=0;j<i;j++) {
+                if( i != j ) {
+                    std::cout << j << "+";
+                    Ball* other = balls[j].get();
+                    if( b1->ballCollision(other, 0.0125) ) {
+                        t = true;
+                    }
+                }
+            }
+            if(!t) {
+                a = true;
+                balls[i].set(b1);
+            }
+            std::cout << ":::";
         }
 
-        if(rand2 < 2) {
-            y = rand() % -200 + (i+30);
-            dy = rand() % -350 + -200;
-        }else{
-            y = rand() % 200 + (i+30);
-            dy = rand() % 350 + 200;
-        }
-
-        Ball* b1 = new Ball( vec2( x, y) );
-        b1->updateR(15);
-        b1->mass = 15*15;
-        b1->v = vec2(dx, dy);
-        b1->setRGB(0,0,255);
-        balls[i].set(b1);
     }
-
-
+}
+double Stage::randNr()
+{
+    return rand() % 500 - 250;
 }
