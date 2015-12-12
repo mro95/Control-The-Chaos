@@ -1,10 +1,10 @@
 #define GL_GLEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glut.h>
+//#include <GL/gl.h>
+//#include <GL/glut.h>
 #include <GLFW/glfw3.h>
 
-#include <ft2build.h>
-#include FT_FREETYPE_H
+//#include <ft2build.h>
+//#include FT_FREETYPE_H
 
 
 
