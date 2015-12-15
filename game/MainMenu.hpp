@@ -15,7 +15,6 @@ class MainMenu {
         int menu;
         void createMenu()
         {
-            menu = glutCreateMenu(menu);
         }
 
 }

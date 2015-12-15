@@ -17,6 +17,7 @@
 
 # define PI           3.14159265358979323846  /* pi */
 # define TAU          6.28318530717958647692  /* tau */
+# define toRadians(d) (d*PI/180)
 
 class Circle {
     public:
@@ -30,6 +31,23 @@ class Circle {
         void drawLineCircle();
         void drawFilledCircle();
         void setRGB( int r, int g, int b );
+
+        //static GLfloat vertices[]( int segments );
+        static void vertices( GLfloat* v, int seg2 )
+        {
+            int seg = 64;
+            double step = (PI*2) / seg;
+            double r = 0.5;
+            v[0] = 0.0f; v[1] = 0.0f;
+            int n = 2;
+            for(double i = 0; i <= TAU; i += step)  {
+                v[n+0] = r * cos(i);
+                v[n+1] = r * sin(i);
+                n+=2;
+            }
+            v[n+0] = r;
+            v[n+1] = 0;
+        }
 
     private:
 

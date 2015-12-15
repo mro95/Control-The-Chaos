@@ -2,7 +2,11 @@ cmake_minimum_required(VERSION 3.0)
 project(ControlTheChaos)
 
 find_package(OpenGL REQUIRED)
-include_directories( ${OPENGL_INCLUDE_DIRS} )
+include_directories(${OPENGL_INCLUDE_DIRS})
+
+find_package(GLEW REQUIRED)
+include_directories(${GLEW_INCLUDE_DIRS})
+link_libraries(${GLEW_LIBRARIES})
 
 option(GLFW_BUILD_DOCS OFF)
 option(GLFW_BUILD_EXAMPLES OFF)
@@ -58,7 +62,7 @@ add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_SHADERS} ${PROJECT_CONFIGS}
                                ${VENDORS_SOURCES})
 
-                           target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${EXTRA_LIBS} freetype glfw ${GLFW_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${EXTRA_LIBS} glew freetype glfw ${GLFW_LIBRARIES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
