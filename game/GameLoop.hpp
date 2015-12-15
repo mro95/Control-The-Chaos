@@ -52,7 +52,7 @@ class GameLoop {
                 "#version 150 core\n"
                 "out vec4 outColor;"
                 "void main() {"
-                "   outColor = vec4(1.0, 1.0, 1.0, 1.0);"
+                "   outColor = vec4(1.0, 0.0, 0.0, 1.0);"
                 "}";
 
 
@@ -67,7 +67,7 @@ class GameLoop {
 
             //GLfloat vertices;
             GLfloat vertices[10000];
-            Circle::vertices( vertices, 10 );
+            Circle::vertices( vertices, 32 );
 
             glBindBuffer(GL_ARRAY_BUFFER, vbo);
             glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -150,7 +150,7 @@ class GameLoop {
                 glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
                 glClear(GL_COLOR_BUFFER_BIT);
 
-                glDrawArrays(GL_TRIANGLE_FAN, 0, 66);
+                glDrawArrays(GL_TRIANGLE_FAN, 0, 34);
 
                 //Draw
                 //render( );

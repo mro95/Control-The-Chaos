@@ -33,20 +33,18 @@ class Circle {
         void setRGB( int r, int g, int b );
 
         //static GLfloat vertices[]( int segments );
-        static void vertices( GLfloat* v, int seg2 )
+        static void vertices( GLfloat* v, int seg )
         {
-            int seg = 64;
-            double step = (PI*2) / seg;
+            double step = TAU / seg;
             double r = 0.5;
             v[0] = 0.0f; v[1] = 0.0f;
             int n = 2;
-            for(double i = 0; i <= TAU; i += step)  {
+            for(double i = 0; i < TAU; i += step)  {
                 v[n+0] = r * cos(i);
                 v[n+1] = r * sin(i);
                 n+=2;
             }
-            v[n+0] = r;
-            v[n+1] = 0;
+            v[n]=r;v[n+1]=0;
         }
 
     private:
