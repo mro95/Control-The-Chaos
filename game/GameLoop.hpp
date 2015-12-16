@@ -184,6 +184,8 @@ class GameLoop {
             if (!glfwInit())
                 return false;
 
+            std::cout << glGetString(GL_VERSION) << "\n";
+
             //Get window size from settings
             int windowHeight = settings->getWindowHeight();
             int windowWidth = settings->getWindowWidth();
